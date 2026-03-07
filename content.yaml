@@ -26,13 +26,13 @@ about:
 
 skills:
   - category: CI/CD & Automation
-    items: GitLab CI/CD, GitHub Actions, Jenkins, Bitbucket Pipelines, ArgoCD
+    items: GitLab CI/CD, GitHub Actions, Jenkins, Bitbucket Pipelines
   - category: Containers & Orchestration
-    items: Docker, Docker Swarm, Kubernetes, Helm, Docker Compose
+    items: Docker, Docker Swarm, Kubernetes, Docker Compose
   - category: Infrastructure as Code
     items: Terraform, Ansible, Bash, Python, PowerShell, YAML
   - category: Cloud Platforms
-    items: AWS (EC2, VPC, Lambda, IAM, S3, CloudWatch, ELB)
+    items: AWS (EC2, VPC, Lambda, IAM, S3, CloudWatch)
   - category: Observability & Monitoring
     items: Prometheus, Grafana, Loki, Promtail, New Relic, Splunk
   - category: Security & Code Quality
@@ -41,7 +41,7 @@ skills:
     items: Linux (RHEL, Debian, Ubuntu), Git, GitLab SCM, Nginx
 
 experience:
-  - role: Project Engineer — DevOps
+  - role: Project Engineer - DevOps
     company: "C-DAC: Centre for Development of Advanced Computing"
     location: Pune
     date: Nov 2022 – Present
