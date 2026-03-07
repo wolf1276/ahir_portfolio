@@ -1,0 +1,106 @@
+# ============================================
+# PORTFOLIO CONTENT — Edit this file to update your site
+# Changes here will automatically reflect on the page.
+# No need to touch index.html, style.css, or script.js.
+# ============================================
+
+about:
+  name: Anand S Kore
+  title: DevOps Engineer
+  summary: >
+    3+ years hands-on experience designing CI/CD pipelines, containerizing
+    microservices, and building observability stacks for production environments.
+    Migrated 25+ projects to GitLab CI/CD, cutting deployment time by 60%.
+    Proficient in Docker, Kubernetes, Terraform, and AWS with a strong
+    foundation in infrastructure automation, DevSecOps, and centralized monitoring.
+  links:
+    - label: anandkore1@gmail.com
+      url: mailto:anandkore1@gmail.com
+      icon: email
+    - label: LinkedIn
+      url: https://www.linkedin.com/in/anandkore101/
+      icon: linkedin
+    - label: GitHub
+      url: https://github.com/TheOneOh1
+      icon: github
+
+skills:
+  - category: CI/CD & Automation
+    items: GitLab CI/CD, GitHub Actions, Jenkins, Bitbucket Pipelines, ArgoCD
+  - category: Containers & Orchestration
+    items: Docker, Docker Swarm, Kubernetes, Helm, Docker Compose
+  - category: Infrastructure as Code
+    items: Terraform, Ansible, Bash, Python, PowerShell, YAML
+  - category: Cloud Platforms
+    items: AWS (EC2, VPC, Lambda, IAM, S3, CloudWatch, ELB)
+  - category: Observability & Monitoring
+    items: Prometheus, Grafana, Loki, Promtail, New Relic, Splunk
+  - category: Security & Code Quality
+    items: SonarQube, Snyk, Snort IDS, VAPT Remediation, Keycloak IAM
+  - category: OS & Version Control
+    items: Linux (RHEL, Debian, Ubuntu), Git, GitLab SCM, Nginx
+
+experience:
+  - role: Project Engineer — DevOps
+    company: "C-DAC: Centre for Development of Advanced Computing"
+    location: Pune
+    date: Nov 2022 – Present
+    bullets:
+      - Migrated 25+ projects from manual deployment to GitLab CI/CD pipelines, reducing deployment time by 60% and eliminating manual release errors across multiple teams.
+      - Integrated SonarQube and Snyk into CI/CD workflows, enforcing automated code quality gates and reducing security vulnerabilities by 30% before production.
+      - Containerized 10+ microservices using Docker and Docker Swarm, improving deployment consistency and resource utilization by 40%.
+      - Architected a centralized logging & monitoring stack (Prometheus, Loki, Grafana) serving 15+ Spring Boot services, reducing MTTD from hours to minutes.
+      - Engineered Jenkins pipelines automating build, test, and release workflows, cutting manual release overhead by 70%.
+      - Developed a Bash provisioning script automating ePariksha deployment — Java, Tomcat, PostgreSQL, backup/restore, cross-platform (RHEL & Debian) — reducing provisioning from 4+ hours to under 30 minutes.
+      - Designed production architecture for ACTS Website & PMS portal, achieving near-zero downtime during migration serving 5,000+ concurrent users.
+      - Deployed and maintained Payment Administration Service on-premise (Java, PostgreSQL, Node.js, Keycloak IAM, Nginx), remediating internal & external VAPT findings.
+      - Standardized Git branching strategies across 5+ dev teams, reducing merge conflicts by 50%.
+
+  - role: Technical Support SME
+    company: Amazon
+    location: Pune
+    date: Jul 2018 – Mar 2021
+    bullets:
+      - Served as Subject Matter Expert for escalated technical issues, troubleshooting complex system and network problems with a 95%+ resolution rate.
+      - Mentored and onboarded 20+ new hires, developing training documentation that reduced ramp-up time by 25%.
+      - Analyzed recurring support patterns, contributing to process automation that reduced ticket volume by 15%.
+
+projects:
+  - name: K8s-Snorty-Splunk
+    description: Kubernetes cluster IDS on AWS with Snort intrusion detection and Splunk dashboards for real-time threat monitoring and alerting.
+    url: https://github.com/TheOneOh1/K8s-Snorty-Splunk
+    tags: [AWS, Kubernetes, Snort, Splunk]
+
+  - name: Couch-Control
+    description: Self-hosted media remote — control playback and volume on Windows from your phone's browser. FastAPI backend with WebSocket real-time updates.
+    url: https://github.com/TheOneOh1/Couch-Control
+    tags: [Python, FastAPI, WebSocket]
+
+  - name: Blackbox-Lite
+    description: Lightweight Bash script to monitor websites and VM hosts, exporting Prometheus-compatible metrics via Node Exporter.
+    url: https://github.com/TheOneOh1/blackbox-lite
+    tags: [Bash, Prometheus, Node Exporter]
+
+  - name: Argus-Scan
+    description: Python-based security automation tool that orchestrates Nmap, Nikto, and Nuclei scans with consolidated reporting.
+    url: https://github.com/TheOneOh1/Argus-Scan
+    tags: [Python, Nmap, Nikto, Nuclei]
+
+  - name: Sentinel
+    description: Synthetic website monitoring using Bash — checks content availability and sends email alerts via SMTP when checks fail.
+    url: https://github.com/TheOneOh1/Sentinel
+    tags: [Bash, SMTP, cURL]
+
+  - name: Darkly-Scanner
+    description: Mass port scanning tool for penetration testers and bug bounty hunters. Scan a specific port across multiple domains at once.
+    url: https://github.com/TheOneOh1/Darkly-Scanner
+    tags: [Shell, Networking]
+
+education:
+  - degree: Post Graduate Diploma, IT Infrastructure, Systems & Security
+    institution: C-DAC — Centre for Development of Advanced Computing, Pune
+    year: "2022"
+
+  - degree: Bachelor of Engineering, Information Technology
+    institution: PVPIT, Sangli — Shivaji University
+    year: "2018"
