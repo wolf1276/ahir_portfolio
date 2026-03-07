@@ -4,7 +4,7 @@ A sleek, data-driven static portfolio website designed explicitly for DevOps, SR
 
 Built with **plain HTML5, CSS3, and Vanilla JavaScript**. Zero build steps, zero node modules (except a CDN link for parsing YAML), and ready to deploy instantly.
 
-## 🚀 Key Features
+## Key Features
 
 - **YAML-Driven Content:** All personal data (skills, experience, projects) is stored in a single `content.yaml` file. Update your site without ever touching HTML or JavaScript.
 - **Recruiter Optimized:** Skills are categorized and presented *above* experience. Every bullet point is scannable in seconds.
@@ -13,7 +13,7 @@ Built with **plain HTML5, CSS3, and Vanilla JavaScript**. Zero build steps, zero
 - **Subtle Interactions:** Scroll-based active navigation highlighting, IntersectionObserver fade-in animations, and a back-to-top button.
 - **Print Ready:** Dedicated `@media print` print styles ensure your portfolio looks perfect if saved as a PDF.
 
-## 🛠️ Getting Started
+## Getting Started
 
 Because there is no build step, getting your portfolio live takes less than 5 minutes.
 
@@ -68,7 +68,7 @@ This site is perfectly suited for **GitHub Pages**.
 2. Push this code to the `main` branch.
 3. In your repository settings, enable GitHub Pages pointing to the `main` branch root.
 
-## 📁 File Structure
+## File Structure
 
 Keep it simple:
 
@@ -77,37 +77,6 @@ Keep it simple:
 - `script.js` — Fetches YAML, renders the DOM, and handles interactions.
 - `content.yaml` — **← Start here.** The only file you need to edit to update your site.
 
-## 🎨 Theme & Design System
-
-The site uses a strict, professional aesthetic intentionally avoiding generic "AI-generated" looks (no glassmorphism, no dramatic drop shadows, no soft gradients). It uses the **JetBrains Mono** font for technical headings and a standard system sans-serif for body text.
-
-If you want to tweak colors, open `style.css` and adjust the CSS targets at the top:
-
-```css
-:root, [data-theme="dark"] {
-  --bg: #0d1117;          /* Background color */
-  --surface: #161b22;     /* Card background */
-  --primary: #58a6ff;     /* Active links, accents */
-  /* ... */
-}
-```
-
-## 🤝 Contributing
-
-This project is tailored as a personal portfolio, but optimizations to the core engine are welcome!
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingIdea`)
-3. Commit your changes (`git commit -m 'Add some AmazingIdea'`)
-4. Push to the branch (`git push origin feature/AmazingIdea`)
-5. Open a Pull Request
-
-## 🆘 Support
-
-If you run into issues with the YAML parsing or deployment:
-- Verify your YAML syntax is valid (indentation matters!).
-- Ensure you are running a local server to view changes, not opening the HTML file directly.
-- Feel free to open an issue in this repository.
 
 ---
-*Built by [Anand S Kore](https://github.com/TheOneOh1)*
+
