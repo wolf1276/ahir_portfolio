@@ -47,17 +47,18 @@ about:
 
 ### 3. Test Locally
 
-Because the JavaScript uses the `fetch()` API to load the `content.yaml` file, you cannot simply double-click `index.html` (it will trigger CORS errors on `file://` protocols). You need a local web server.
+Because the JavaScript uses the `fetch()` API to load the `content.yaml` file, you cannot simply double-click `index.html` (it will trigger CORS errors). Use the included management script to preview your site cleanly.
 
-If you have Python installed:
+**Quick start:**
 ```bash
-python -m http.server 8080
-# Open http://localhost:8080 in your browser
+./manage.sh start
 ```
+*This automatically detects Python or Node environments and starts a local server on port 8080.*
 
-Or using Node.js:
+**Docker Preview (Deep DevOps):**
+Want to see exactly how it runs in an Nginx container?
 ```bash
-npx serve
+./manage.sh docker
 ```
 
 ### 4. Deploy
