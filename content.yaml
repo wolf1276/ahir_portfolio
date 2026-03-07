@@ -7,12 +7,15 @@
 about:
   name: Anand S Kore
   title: DevOps Engineer
+  tagline: Bridging "works on my machine" to "works everywhere."
   summary: >
     3+ years hands-on experience designing CI/CD pipelines, containerizing
     microservices, and building observability stacks for production environments.
     Migrated 25+ projects to GitLab CI/CD, cutting deployment time by 60%.
     Proficient in Docker, Kubernetes, Terraform, and AWS with a strong
     foundation in infrastructure automation, DevSecOps, and centralized monitoring.
+  currently_learning: Azure, Advanced Terraform, CKA Prep
+  resume_url: Anand_Kore_0326.pdf
   links:
     - label: anandkore1@gmail.com
       url: mailto:anandkore1@gmail.com
@@ -23,6 +26,9 @@ about:
     - label: GitHub
       url: https://github.com/TheOneOh1
       icon: github
+    - label: Resume
+      url: Anand_Kore_0326.pdf
+      icon: download
 
 skills:
   - category: CI/CD & Automation

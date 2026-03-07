@@ -1,10 +1,11 @@
 /* ============================================
    PORTFOLIO — Design System & Styles
-   Palette: Void Space
+   Palette: Void Space (dark) + Cloud Canvas (light)
    ============================================ */
 
-/* --- Tokens --- */
-:root {
+/* --- Dark theme tokens (default) --- */
+:root,
+[data-theme="dark"] {
   --bg: #0d1117;
   --surface: #161b22;
   --surface-hover: #1c2129;
@@ -21,6 +22,20 @@
   --nav-height: 48px;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
   --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+/* --- Light theme tokens --- */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface-hover: #eef1f5;
+  --primary: #0969da;
+  --secondary: #0550ae;
+  --accent: #cf222e;
+  --text: #1f2328;
+  --text-bright: #1f2328;
+  --muted: #656d76;
+  --border: #d0d7de;
 }
 
 /* --- Reset --- */
@@ -43,6 +58,7 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -71,6 +87,7 @@ ul, ol {
   z-index: 100;
   display: flex;
   align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 .nav-inner {
@@ -100,11 +117,23 @@ ul, ol {
   font-size: 13px;
   color: var(--muted);
   transition: color var(--transition);
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
 }
 
-.nav-links a:hover,
+.nav-links a:hover {
+  color: var(--text-bright);
+}
+
 .nav-links a.active {
   color: var(--text-bright);
+  border-bottom-color: var(--primary);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-toggle {
@@ -120,6 +149,36 @@ ul, ol {
   width: 20px;
   height: 20px;
 }
+
+/* --- Theme toggle --- */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.theme-toggle:hover {
+  color: var(--text-bright);
+  border-color: var(--muted);
+}
+
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Show sun in dark mode, moon in light mode */
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
+[data-theme="light"] .icon-sun { display: none; }
+[data-theme="light"] .icon-moon { display: block; }
 
 /* --- Main container --- */
 .container {
@@ -147,6 +206,18 @@ section:last-of-type {
   letter-spacing: 0.5px;
 }
 
+/* --- Fade-in on scroll --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* --- About --- */
 .about {
   padding-top: calc(var(--nav-height) + 64px);
@@ -164,19 +235,38 @@ section:last-of-type {
 .about-title {
   font-size: 16px;
   color: var(--primary);
-  margin-bottom: 20px;
+  margin-bottom: 6px;
+}
+
+.about-tagline {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 16px;
 }
 
 .about-desc {
   max-width: 640px;
   color: var(--text);
+  margin-bottom: 12px;
+}
+
+.about-learning {
+  font-size: 13px;
+  color: var(--muted);
   margin-bottom: 24px;
+}
+
+.about-learning strong {
+  color: var(--text);
+  font-weight: 500;
 }
 
 .about-links {
   display: flex;
   gap: 20px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .about-links a {
@@ -281,7 +371,7 @@ section:last-of-type {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 16px;
-  transition: border-color var(--transition);
+  transition: border-color var(--transition), background-color 0.3s ease;
 }
 
 .skill-card:hover {
@@ -316,7 +406,7 @@ section:last-of-type {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--transition);
+  transition: border-color var(--transition), background-color 0.3s ease;
 }
 
 .project-card:hover {
@@ -372,6 +462,7 @@ section:last-of-type {
   border: 1px solid var(--border);
   border-radius: 4px;
   padding: 2px 8px;
+  transition: background-color 0.3s ease;
 }
 
 /* --- Education --- */
@@ -412,6 +503,7 @@ section:last-of-type {
 .footer {
   padding: 32px 0;
   border-top: 1px solid var(--border);
+  transition: background-color 0.3s ease;
 }
 
 .footer-inner {
@@ -451,6 +543,42 @@ section:last-of-type {
   color: var(--muted);
 }
 
+/* --- Back to top --- */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition), color var(--transition), border-color var(--transition);
+  z-index: 50;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  color: var(--text-bright);
+  border-color: var(--muted);
+}
+
+.back-to-top svg {
+  width: 16px;
+  height: 16px;
+}
+
 /* --- Responsive --- */
 @media (max-width: 640px) {
   .nav-links {
@@ -468,6 +596,15 @@ section:last-of-type {
 
   .nav-links.open {
     display: flex;
+  }
+
+  .nav-links a {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .nav-links a.active {
+    border-bottom: none;
   }
 
   .nav-toggle {
@@ -507,5 +644,68 @@ section:last-of-type {
   .footer-inner {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* --- Print stylesheet --- */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .nav,
+  .back-to-top,
+  .theme-toggle,
+  .nav-toggle {
+    display: none !important;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .about {
+    padding-top: 0;
+  }
+
+  section {
+    padding: 16px 0;
+    border-bottom: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  .skill-card,
+  .project-card {
+    background: transparent;
+    border: 1px solid #ccc;
+  }
+
+  .project-tag {
+    background: transparent;
+    border: 1px solid #ccc;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .about-links a::after {
+    content: " (" attr(href) ")";
+    font-size: 10px;
+    color: #666;
+  }
+
+  .footer {
+    padding: 8px 0;
+  }
+
+  .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
