@@ -5,3 +5,6 @@ resume/*.out
 resume/*.synctex.gz
 resume/*.fls
 resume/*.fdb_latexmk
+
+# Local notes
+future_scope.md
