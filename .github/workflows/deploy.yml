@@ -1,5 +1,5 @@
 # =============================================================================
-# Portfolio CI/CD — Compile LaTeX Resume & Deploy via GitHub Pages
+# Portfolio CI/CD - Compile LaTeX Resume & Deploy via GitHub Pages
 # =============================================================================
 # Triggers on push to main. If resume source files changed, compiles the
 # .tex → .pdf using native TeX Live and commits the updated PDF back to repo.
@@ -50,7 +50,7 @@ jobs:
           fi
 
       # ---------------------------------------------------------------
-      # Install TeX Live (only what's needed — fast & lightweight)
+      # Install TeX Live (only what's needed - fast & lightweight)
       # ---------------------------------------------------------------
       - name: Install TeX Live
         if: steps.changes.outputs.changed == 'true'
