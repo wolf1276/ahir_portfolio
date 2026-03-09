@@ -2,7 +2,7 @@
 # Portfolio CI/CD — Compile LaTeX Resume & Deploy via GitHub Pages
 # =============================================================================
 # Triggers on push to main. If resume source files changed, compiles the
-# .tex → .pdf using native TeX Live and commits the updated PDF back to repo.
+# .tex → .pdf and commits the updated PDF back to the repo.
 # GitHub Pages continues to auto-deploy from the main branch as before.
 # =============================================================================
 
@@ -35,7 +35,7 @@ jobs:
       - name: Check for resume changes
         id: changes
         run: |
-          # On first run or if PDF doesn't exist yet, always compile
+          # On first run or if resume dir doesn't exist yet, always compile
           if [ ! -f "Anand_Kore_Resume.pdf" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
             exit 0
@@ -50,27 +50,15 @@ jobs:
           fi
 
       # ---------------------------------------------------------------
-      # Install TeX Live (only what's needed — fast & lightweight)
-      # ---------------------------------------------------------------
-      - name: Install TeX Live
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends \
-            texlive-latex-base \
-            texlive-latex-extra \
-            texlive-fonts-recommended \
-            latexmk
-
-      # ---------------------------------------------------------------
       # Compile LaTeX → PDF
+      # Uses xu-cheng/latex-action which provides a full TeX Live env
       # ---------------------------------------------------------------
       - name: Compile LaTeX to PDF
         if: steps.changes.outputs.changed == 'true'
-        run: |
-          cd resume
-          latexmk -pdf -interaction=nonstopmode -halt-on-error Anand_Kore_Resume.tex
-          echo "✅ Resume compiled successfully"
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume/Anand_Kore_Resume.tex
+          work_in_root_file_dir: true
 
       # ---------------------------------------------------------------
       # Move compiled PDF to repo root & commit back
@@ -78,6 +66,7 @@ jobs:
       - name: Move PDF to root
         if: steps.changes.outputs.changed == 'true'
         run: |
+          # latex-action outputs PDF next to the .tex file
           mv resume/Anand_Kore_Resume.pdf ./Anand_Kore_Resume.pdf
 
       - name: Commit and push updated PDF
