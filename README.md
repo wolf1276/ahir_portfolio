@@ -25,7 +25,7 @@ Maintaining an up-to-date resume on a portfolio site meant a tedious, manual wor
 
 ### Solution
 
-Implemented a **GitHub Actions CI/CD pipeline** that automates LaTeX-to-PDF compilation directly in the repository — eliminating the Overleaf dependency entirely.
+Implemented a **GitHub Actions CI/CD pipeline** that automates LaTeX-to-PDF compilation directly in the repository - eliminating the Overleaf dependency entirely.
 
 ```mermaid
 graph LR
@@ -41,7 +41,7 @@ graph LR
 
 | Concern | Decision |
 |---|---|
-| **LaTeX compilation** | Native `apt` + `latexmk` instead of a 5GB Docker image — faster, transparent, zero third-party supply chain risk |
+| **LaTeX compilation** | Native `apt` + `latexmk` instead of a 5GB Docker image - faster, transparent, zero third-party supply chain risk |
 | **Infinite loop prevention** | Commit message includes `[skip ci]`; workflow only triggers when `resume/` files change |
 | **PDF persistence** | Compiled PDF is committed back to `main` so it's always available when cloning |
 | **Zero disruption** | Existing branch-based GitHub Pages deployment continues unchanged |
@@ -95,7 +95,7 @@ about:
 ```
 
 **Important Notes:**
-- Your resume source lives in `resume/Anand_Kore_Resume.tex`. Edit it and push — the CI pipeline compiles the PDF automatically.
+- Your resume source lives in `resume/Anand_Kore_Resume.tex`. Edit it and push - the CI pipeline compiles the PDF automatically.
 - For icons in the links section, supported values are: `email`, `linkedin`, `github`, and `download`.
 
 ### 3. Test Locally
@@ -121,7 +121,7 @@ This site is perfectly suited for **GitHub Pages**.
 ```
 .
 ├── .github/workflows/
-│   └── deploy.yml              # CI/CD — LaTeX compilation pipeline
+│   └── deploy.yml              # CI/CD - LaTeX compilation pipeline
 ├── resume/
 │   ├── Anand_Kore_Resume.tex   # Resume LaTeX source
 │   └── resume.cls              # Custom LaTeX class file
