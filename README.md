@@ -4,14 +4,67 @@ A sleek, data-driven static portfolio website designed explicitly for DevOps, SR
 
 Built with **plain HTML5, CSS3, and Vanilla JavaScript**. Zero build steps, zero node modules (except a CDN link for parsing YAML), and ready to deploy instantly.
 
+🔗 **Live:** [theoneoh1.github.io](https://theoneoh1.github.io/)
+
+---
+
+## How It Works?
+
+### Problem Statement
+
+Maintaining an up-to-date resume on a portfolio site meant a tedious, manual workflow:
+
+1. Edit the `.tex` file locally
+2. Copy-paste it into **Overleaf**
+3. Compile the PDF on Overleaf
+4. Download the PDF
+5. Replace the old PDF in the repository
+6. Push and wait for GitHub Pages to deploy
+
+> Every resume update required **6 manual steps** across two platforms, creating friction and increasing the chance of deploying a stale resume.
+
+### Solution
+
+Implemented a **GitHub Actions CI/CD pipeline** that automates LaTeX-to-PDF compilation directly in the repository — eliminating the Overleaf dependency entirely.
+
+```mermaid
+graph LR
+    A["✏️ Edit .tex file"] --> B["📤 git push to main"]
+    B --> C["⚙️ GitHub Actions triggers"]
+    C --> D["📦 Install TeX Live\n(minimal packages)"]
+    D --> E["🔨 latexmk compiles\n.tex → .pdf"]
+    E --> F["💾 Commit PDF back\nto repo"]
+    F --> G["🚀 GitHub Pages\nauto-deploys"]
+```
+
+### Key Design Decisions
+
+| Concern | Decision |
+|---|---|
+| **LaTeX compilation** | Native `apt` + `latexmk` instead of a 5GB Docker image — faster, transparent, zero third-party supply chain risk |
+| **Infinite loop prevention** | Commit message includes `[skip ci]`; workflow only triggers when `resume/` files change |
+| **PDF persistence** | Compiled PDF is committed back to `main` so it's always available when cloning |
+| **Zero disruption** | Existing branch-based GitHub Pages deployment continues unchanged |
+
+### Result
+
+Resume updates now require **just 2 steps**: edit the `.tex` file and push. The pipeline handles everything else in under 2 minutes.
+
+```
+Before:  Edit → Overleaf → Compile → Download → Replace → Push  (6 steps, ~15 min)
+After:   Edit → Push                                             (2 steps, ~2 min)
+```
+
+---
+
 ## Key Features
 
 - **YAML-Driven Content:** All personal data (skills, experience, projects) is stored in a single `content.yaml` file. Update your site without ever touching HTML or JavaScript.
-- **Recruiter Optimized:** Skills are categorized and presented *above* experience. Every bullet point is scannable in seconds.
-- **Dark & Light Modes:** Built-in theme toggle with `localStorage` persistence. Defaults to the "Void Space" dark theme (ideal for developers) with a cleanly mapped "Cloud Canvas" light theme.
+- **Automated Resume Pipeline:** Push changes to `resume/Anand_Kore_Resume.tex` and the CI/CD pipeline compiles and deploys the updated PDF automatically.
+- **Dark & Light Modes:** Built-in theme toggle with `localStorage` persistence. Defaults to dark theme with a cleanly mapped light theme.
 - **Responsive & Fast:** Fully responsive grid layouts, mobile navigation drawer, and 100% Lighthouse performance scores.
 - **Subtle Interactions:** Scroll-based active navigation highlighting, IntersectionObserver fade-in animations, and a back-to-top button.
-- **Print Ready:** Dedicated `@media print` print styles ensure your portfolio looks perfect if saved as a PDF.
+- **Print Ready:** Dedicated `@media print` styles ensure your portfolio looks perfect if saved as a PDF.
 
 ## Getting Started
 
@@ -20,8 +73,8 @@ Because there is no build step, getting your portfolio live takes less than 5 mi
 ### 1. Clone & Setup
 
 ```bash
-git clone https://github.com/TheOneOh1/portfolio-site.git
-cd portfolio-site
+git clone https://github.com/TheOneOh1/theoneoh1.github.io.git
+cd theoneoh1.github.io
 ```
 
 ### 2. Customize Your Content
@@ -36,30 +89,23 @@ about:
   summary: >
     Your professional summary goes here...
   currently_learning: Azure, Kubernetes Certs
-  resume_url: your_resume.pdf
+  resume_url: Anand_Kore_Resume.pdf
 
 # ... update skills, experience, projects, etc.
 ```
 
 **Important Notes:**
-- Drop your actual resume PDF into the project root and update `resume_url` in the YAML to match the filename.
+- Your resume source lives in `resume/Anand_Kore_Resume.tex`. Edit it and push — the CI pipeline compiles the PDF automatically.
 - For icons in the links section, supported values are: `email`, `linkedin`, `github`, and `download`.
 
 ### 3. Test Locally
 
-Because the JavaScript uses the `fetch()` API to load the `content.yaml` file, you cannot simply double-click `index.html` (it will trigger CORS errors). Use the included management script to preview your site cleanly.
+Because the JavaScript uses the `fetch()` API to load the `content.yaml` file, you cannot simply double-click `index.html`. Use the included management script:
 
-**Quick start:**
 ```bash
 ./manage.sh start
 ```
-*This automatically detects Python or Node environments and starts a local server on port 8080.*
-
-**Docker Preview (Deep DevOps):**
-Want to see exactly how it runs in an Nginx container?
-```bash
-./manage.sh docker
-```
+*Automatically detects Python or Node environments and starts a local server on port 8080.*
 
 ### 4. Deploy
 
@@ -68,16 +114,23 @@ This site is perfectly suited for **GitHub Pages**.
 1. Create a repository on GitHub (e.g., `yourusername.github.io`).
 2. Push this code to the `main` branch.
 3. In your repository settings, enable GitHub Pages pointing to the `main` branch root.
+4. The GitHub Actions workflow will automatically compile your resume on every push.
 
 ## File Structure
 
-Keep it simple:
-
-- `index.html` — The skeleton layout, meta tags, and SVG icons.
-- `style.css` — The complete design system (tokens, grid, themes, print).
-- `script.js` — Fetches YAML, renders the DOM, and handles interactions.
-- `content.yaml` — **← Start here.** The only file you need to edit to update your site.
-
+```
+.
+├── .github/workflows/
+│   └── deploy.yml              # CI/CD — LaTeX compilation pipeline
+├── resume/
+│   ├── Anand_Kore_Resume.tex   # Resume LaTeX source
+│   └── resume.cls              # Custom LaTeX class file
+├── index.html                  # Skeleton layout, meta tags, SVG icons
+├── style.css                   # Design system (tokens, grid, themes, print)
+├── script.js                   # Fetches YAML, renders DOM, handles interactions
+├── content.yaml                # ← Start here. The only file to edit for site content
+├── Anand_Kore_Resume.pdf       # Auto-generated by CI pipeline
+└── manage.sh                   # Local dev server helper script
+```
 
 ---
-

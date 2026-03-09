@@ -249,7 +249,7 @@
 
       // Update page title from content
       if (data.about && data.about.name && data.about.title) {
-        document.title = data.about.name + ' — ' + data.about.title;
+        document.title = data.about.name + ' - ' + data.about.title;
       }
 
       // Init features that depend on rendered content
