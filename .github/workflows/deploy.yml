@@ -1,0 +1,80 @@
+# =============================================================================
+# Portfolio CI/CD — Compile LaTeX Resume & Deploy via GitHub Pages
+# =============================================================================
+# Triggers on push to main. If resume source files changed, compiles the
+# .tex → .pdf and commits the updated PDF back to the repo.
+# GitHub Pages continues to auto-deploy from the main branch as before.
+# =============================================================================
+
+name: Build Resume & Deploy
+
+on:
+  push:
+    branches: [main]
+
+# Prevent concurrent runs; cancel in-progress runs on new push
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # needed to push compiled PDF back to repo
+
+jobs:
+  compile-resume:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ---------------------------------------------------------------
+      # Check if any resume source files (.tex, .cls) changed
+      # If not, skip compilation to save time
+      # ---------------------------------------------------------------
+      - name: Check for resume changes
+        id: changes
+        run: |
+          # On first run or if resume dir doesn't exist yet, always compile
+          if [ ! -f "Anand_Kore_Resume.pdf" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Check if any .tex or .cls files changed in this push
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- 'resume/' 2>/dev/null || echo "resume/")
+          if [ -n "$CHANGED" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      # ---------------------------------------------------------------
+      # Compile LaTeX → PDF
+      # Uses xu-cheng/latex-action which provides a full TeX Live env
+      # ---------------------------------------------------------------
+      - name: Compile LaTeX to PDF
+        if: steps.changes.outputs.changed == 'true'
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume/Anand_Kore_Resume.tex
+          working_directory: .
+
+      # ---------------------------------------------------------------
+      # Move compiled PDF to repo root & commit back
+      # ---------------------------------------------------------------
+      - name: Move PDF to root
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          # latex-action outputs PDF next to the .tex file
+          mv resume/Anand_Kore_Resume.pdf ./Anand_Kore_Resume.pdf
+
+      - name: Commit and push updated PDF
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Anand_Kore_Resume.pdf
+          # Only commit if there are actual changes
+          git diff --cached --quiet || git commit -m "chore: recompile resume PDF [skip ci]"
+          git push

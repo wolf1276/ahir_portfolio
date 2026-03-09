@@ -5,7 +5,7 @@
 # ============================================
 
 about:
-  name: Anand S Kore
+  name: Anand Kore
   title: DevOps Engineer
   tagline: Bridging "works on my machine" to "works everywhere."
   summary: >
@@ -15,7 +15,7 @@ about:
     Proficient in Docker, Kubernetes, Terraform, and AWS with a strong
     foundation in infrastructure automation, DevSecOps, and centralized monitoring.
   currently_learning: Azure, Advanced Terraform, CKA Prep
-  resume_url: Anand_Kore_0326.pdf
+  resume_url: Anand_Kore_Resume.pdf
   links:
     - label: anandkore1@gmail.com
       url: mailto:anandkore1@gmail.com
@@ -27,7 +27,7 @@ about:
       url: https://github.com/TheOneOh1
       icon: github
     - label: Resume
-      url: Anand_Kore_0326.pdf
+      url: Anand_Kore_Resume.pdf
       icon: download
 
 skills:
@@ -57,19 +57,18 @@ experience:
       - Containerized 10+ microservices using Docker and Docker Swarm, improving deployment consistency and resource utilization by 40%.
       - Architected a centralized logging & monitoring stack (Prometheus, Loki, Grafana) serving 15+ Spring Boot services, reducing MTTD from hours to minutes.
       - Engineered Jenkins pipelines automating build, test, and release workflows, cutting manual release overhead by 70%.
-      - Developed a Bash provisioning script automating ePariksha deployment — Java, Tomcat, PostgreSQL, backup/restore, cross-platform (RHEL & Debian) — reducing provisioning from 4+ hours to under 30 minutes.
+      - Developed a Bash provisioning script automating ePariksha deployment - Java, Tomcat, PostgreSQL, backup/restore, cross-platform (RHEL & Debian) - reducing provisioning from 4+ hours to under 30 minutes.
       - Designed production architecture for ACTS Website & PMS portal, achieving near-zero downtime during migration serving 5,000+ concurrent users.
       - Deployed and maintained Payment Administration Service on-premise (Java, PostgreSQL, Node.js, Keycloak IAM, Nginx), remediating internal & external VAPT findings.
       - Standardized Git branching strategies across 5+ dev teams, reducing merge conflicts by 50%.
 
-  - role: Technical Support SME
+  - role: CSA & SME
     company: Amazon
     location: Pune
-    date: Jul 2018 – Mar 2021
+    date: Jul 2018 - Mar 2021
     bullets:
-      - Served as Subject Matter Expert for escalated technical issues, troubleshooting complex system and network problems with a 95%+ resolution rate.
-      - Mentored and onboarded 20+ new hires, developing training documentation that reduced ramp-up time by 25%.
-      - Analyzed recurring support patterns, contributing to process automation that reduced ticket volume by 15%.
+      - Leveraged strong technical communication skills to translate complex issues into actionable solutions for end-users.
+      - Led peer training initiatives, improving overall team performance metrics and decreasing new hire onboarding time by 25%.
 
 projects:
   - name: K8s-Snorty-Splunk
@@ -78,7 +77,7 @@ projects:
     tags: [AWS, Kubernetes, Snort, Splunk]
 
   - name: Couch-Control
-    description: Self-hosted media remote — control playback and volume on Windows from your phone's browser. FastAPI backend with WebSocket real-time updates.
+    description: Self-hosted media remote - control playback and volume on Windows from your phone's browser. FastAPI backend with WebSocket real-time updates.
     url: https://github.com/TheOneOh1/Couch-Control
     tags: [Python, FastAPI, WebSocket]
 
@@ -93,7 +92,7 @@ projects:
     tags: [Python, Nmap, Nikto, Nuclei]
 
   - name: Sentinel
-    description: Synthetic website monitoring using Bash — checks content availability and sends email alerts via SMTP when checks fail.
+    description: Synthetic website monitoring using Bash - checks content availability and sends email alerts via SMTP when checks fail.
     url: https://github.com/TheOneOh1/Sentinel
     tags: [Bash, SMTP, cURL]
 
@@ -103,10 +102,10 @@ projects:
     tags: [Shell, Networking]
 
 education:
-  - degree: Post Graduate Diploma, IT Infrastructure, Systems & Security
-    institution: C-DAC — Centre for Development of Advanced Computing, Pune
+  - degree: Post Graduate Diploma in IT Infrastructure, Systems & Security
+    institution: C-DAC - Centre for Development of Advanced Computing, Pune
     year: "2022"
 
-  - degree: Bachelor of Engineering, Information Technology
-    institution: PVPIT, Sangli — Shivaji University
+  - degree: Bachelor of Engineering in Information Technology
+    institution: PVPIT, Sangli - Shivaji University
     year: "2018"

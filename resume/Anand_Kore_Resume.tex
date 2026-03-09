@@ -1,0 +1,109 @@
+\documentclass{resume} % Use the custom resume.cls style
+
+\usepackage[left=0.4 in,top=0.4in,right=0.4 in,bottom=0.4in]{geometry} % Document margins
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}} 
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\name{Anand Kore} % Your name
+\address{+91-9881203872 \\ Pune, India} 
+\address{\href{mailto:anandkore1@gmail.com}{anandkore1@gmail.com} \\ \href{https://www.linkedin.com/in/anandkore101/}{LinkedIn} \\ \href{https://github.com/TheOneOh1}{GitHub}}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	PROFESSIONAL SUMMARY
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{PROFESSIONAL SUMMARY}
+
+{DevOps Engineer with 4+ years of hands-on experience designing CI/CD pipelines, containerizing microservices, and building observability stacks for production environments. Migrated 25+ projects to GitLab CI/CD - cutting deployment time by 60\%. Proficient in Docker, Kubernetes, Terraform, and AWS with a strong foundation in infrastructure automation, DevSecOps integration, and centralized monitoring. Passionate about building reliable, scalable, and secure cloud-native systems.}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+% TECHNICAL SKILLS
+%----------------------------------------------------------------------------------------
+\begin{rSection}{TECHNICAL SKILLS}
+
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+CI/CD \& Automation & GitLab CI/CD, GitHub Actions, Jenkins, Bitbucket Pipelines, ArgoCD
+\\
+Containers \& Orchestration & Docker, Docker Swarm, Kubernetes, Helm, Docker Compose \\
+Infrastructure as Code & Terraform, Ansible, Bash, Python, PowerShell, YAML \\
+Cloud Platforms & AWS (EC2, VPC, Lambda, IAM, S3, CloudWatch, ELB) \\
+Observability \& Monitoring & Prometheus, Grafana, Loki, Promtail, New Relic, Splunk \\
+Security \& Code Quality & SonarQube, Snyk, Snort IDS, VAPT Remediation, Keycloak IAM \\
+OS \& Version Control & Linux (RHEL, Debian, Ubuntu), Git, GitLab SCM, Nginx \\
+\end{tabular}\\
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	PROFESSIONAL EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{PROFESSIONAL EXPERIENCE}
+
+\textbf{Project Engineer - DevOps} \hfill Nov 2022 - Present\\
+C-DAC: Centre for Development of Advanced Computing \hfill \textit{Pune, India}
+ \begin{itemize}
+    \itemsep -3pt {} 
+     \item Migrated 25+ projects from manual deployment to GitLab CI/CD pipelines, reducing deployment time by 60\% and eliminating manual release errors across multiple teams.
+     \item Integrated SonarQube and Snyk into CI/CD workflows, enforcing automated code quality gates and reducing security vulnerabilities by 30\% before production.
+     \item Containerized 10+ microservices applications using Docker and Docker Swarm, improving deployment consistency and resource utilization by 40\%.
+     \item Architected a centralized logging \& monitoring stack (Prometheus, Loki, Grafana) serving 15+ Spring Boot services, reducing mean-time-to-detection (MTTD) from hours to minutes.
+     \item Engineered Jenkins pipelines automating build, test, and release workflows for multiple product teams, cutting manual release overhead by 70\%.
+     \item Developed a full-stack Bash provisioning script automating CDAC's ePariksha deployment - Java, Tomcat, PostgreSQL setup, database backup/restore, and cross-platform compatibility (RHEL \& Debian) - reducing provisioning time from 4+ hours to under 30 minutes.
+     \item Designed \& implemented production architecture for ACTS Website \& PMS portal, achieving near-zero downtime during migration and serving 5,000+ concurrent users.
+     \item Deployed and maintained a critical Payment Administration Service on-premise (Java microservices, PostgreSQL, Node.js, Keycloak IAM, Nginx), proactively remediating internal \& external VAPT findings.
+     \item Standardized Git branching strategies and merge-request workflows across 5+ development teams, improving collaboration and reducing merge conflicts by 50\%.
+ \end{itemize}
+ 
+\textbf{CSA \& SME} \hfill Jul 2018 - Mar 2021\\
+Amazon \hfill \textit{Pune, India}
+ \begin{itemize}
+    \itemsep -3pt {} 
+     \item Leveraged strong technical communication skills to translate complex issues into actionable solutions for end-users.
+     \item Led peer training initiatives, improving overall team performance metrics and decreasing new hire onboarding time by 25\%.
+ \end{itemize}
+
+\end{rSection} 
+
+%----------------------------------------------------------------------------------------
+%	KEY PROJECTS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{KEY PROJECTS}
+
+\textbf{K8s Cluster Intrusion Detection with Splunk} - Deployed Snort IDS on AWS-hosted Kubernetes cluster with Splunk dashboards for real-time threat monitoring and alerting.
+
+\textbf{Centralized Microservices Observability} - Built a Syslog + Prometheus + Loki + Grafana stack providing unified metrics and log visualization across 15+ containerized services.
+
+\textbf{Darkly-Scanner} - Authored a shell-based mass port scanning tool for penetration testers and bug bounty hunters. Open-sourced on GitHub.
+
+\end{rSection} 
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Education}
+
+{\bf Post Graduate Diploma}, IT Infrastructure, Systems \& Security \hfill {2022}\\
+CDAC - Centre for Development of Advanced Computing, Pune
+
+{\bf Bachelor of Engineering}, Information Technology \hfill {2018}\\
+PVPIT, Sangli - Shivaji University
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+\begin{rSection}{Certifications \& Continuous Learning} 
+\begin{itemize}
+    \itemsep -3pt {} 
+    \item Docker Mastery: with Kubernetes and Swarm \textit{[Udemy]}
+    \item GitLab CI: Pipelines, CI/CD, and DevOps \textit{[Udemy]}
+    \item Bash Mastery \textit{[Udemy]}
+\end{itemize}
+\end{rSection}
+
+
+\end{document}
