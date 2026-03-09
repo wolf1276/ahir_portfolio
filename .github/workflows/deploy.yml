@@ -58,7 +58,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: resume/Anand_Kore_Resume.tex
-          working_directory: .
+          work_in_root_file_dir: true
 
       # ---------------------------------------------------------------
       # Move compiled PDF to repo root & commit back
