@@ -1,5 +1,5 @@
 /* ============================================
-   PORTFOLIO — YAML-driven renderer + enhancements
+   PORTFOLIO - YAML-driven renderer + enhancements
    Edit content.yaml to update the site.
    ============================================ */
 
@@ -156,8 +156,8 @@
 
       return '<div class="exp-item fade-in">' +
         '<div class="exp-header">' +
-          '<span class="exp-role">' + esc(job.role) + '</span>' +
-          '<span class="exp-date">' + esc(job.date) + '</span>' +
+        '<span class="exp-role">' + esc(job.role) + '</span>' +
+        '<span class="exp-date">' + esc(job.date) + '</span>' +
         '</div>' +
         '<p class="exp-company">' + esc(job.company) + ' · ' + esc(job.location) + '</p>' +
         '<ul class="exp-bullets">' + bullets + '</ul>' +
@@ -180,8 +180,8 @@
 
       return '<div class="project-card fade-in">' +
         '<div class="project-card-header">' +
-          '<h3 class="project-card-name">' + esc(p.name) + '</h3>' +
-          '<a href="' + esc(p.url) + '" target="_blank" rel="noopener" class="project-card-link" aria-label="View on GitHub">' + ICONS.external + '</a>' +
+        '<h3 class="project-card-name">' + esc(p.name) + '</h3>' +
+        '<a href="' + esc(p.url) + '" target="_blank" rel="noopener" class="project-card-link" aria-label="View on GitHub">' + ICONS.external + '</a>' +
         '</div>' +
         '<p class="project-card-desc">' + esc(p.description) + '</p>' +
         '<div class="project-card-tags">' + tags + '</div>' +
@@ -224,8 +224,8 @@
 
     el.innerHTML =
       '<div class="container"><div class="footer-inner">' +
-        '<div class="footer-links">' + footerLinks + '</div>' +
-        '<span class="footer-copy">&copy; ' + new Date().getFullYear() + ' Anand Kore</span>' +
+      '<div class="footer-links">' + footerLinks + '</div>' +
+      '<span class="footer-copy">&copy; ' + new Date().getFullYear() + ' Anand Kore</span>' +
       '</div></div>';
   }
 

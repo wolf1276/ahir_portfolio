@@ -1,5 +1,5 @@
 # =============================================================================
-# Portfolio CI/CD — Compile LaTeX Resume & Deploy via GitHub Pages
+# Portfolio CI/CD - Compile LaTeX Resume & Deploy via GitHub Pages
 # =============================================================================
 # Triggers on push to main. If resume source files changed, compiles the
 # .tex → .pdf and commits the updated PDF back to the repo.
