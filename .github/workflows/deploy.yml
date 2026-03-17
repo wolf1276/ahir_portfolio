@@ -10,7 +10,7 @@ name: Build Resume & Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [main, ft-seo-friendly]
 
 # Prevent concurrent runs; cancel in-progress runs on new push
 concurrency:
