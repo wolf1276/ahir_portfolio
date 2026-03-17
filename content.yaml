@@ -26,6 +26,9 @@ about:
     - label: GitHub
       url: https://github.com/TheOneOh1
       icon: github
+    - label: Preview Resume
+      url: Anand_Kore_Resume.pdf
+      icon: preview
     - label: Resume
       url: Anand_Kore_Resume.pdf
       icon: download

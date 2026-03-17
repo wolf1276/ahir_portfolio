@@ -12,6 +12,7 @@
     linkedin: '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.5 3A1.5 1.5 0 003 4.5v11A1.5 1.5 0 004.5 17h11a1.5 1.5 0 001.5-1.5v-11A1.5 1.5 0 0015.5 3h-11zM7 7.5V14H5V7.5h2zm-1-1.25a1 1 0 110-2 1 1 0 010 2zM15 14h-2v-3.25c0-.87-.33-1.25-1-1.25s-1.17.52-1.17 1.25V14H9V7.5h1.83v.9S11.5 7.25 12.75 7.25C14.17 7.25 15 8.17 15 10v4z"/></svg>',
     github: '<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836a9.578 9.578 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>',
     download: '<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>',
+    preview: '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>',
     external: '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>'
   };
 
@@ -107,6 +108,9 @@
 
     var links = (data.links || []).map(function (l) {
       var icon = ICONS[l.icon] || '';
+      if (l.icon === 'preview') {
+        return '<button type="button" class="resume-preview-btn" data-url="' + esc(l.url) + '">' + icon + ' ' + esc(l.label) + '</button>';
+      }
       var target = isExternal(l.url) ? ' target="_blank" rel="noopener"' : '';
       var dl = l.icon === 'download' ? ' download' : '';
       return '<a href="' + esc(l.url) + '"' + target + dl + '>' + icon + ' ' + esc(l.label) + '</a>';
@@ -255,6 +259,7 @@
       // Init features that depend on rendered content
       initFadeIn();
       initScrollTracking();
+      initResumePreview();
     })
     .catch(function (err) {
       console.error('Content load error:', err);
@@ -307,5 +312,59 @@
 
     window.addEventListener('scroll', setActiveLink, { passive: true });
     setActiveLink();
+  }
+
+  // ===========================================
+  // RESUME PREVIEW MODAL
+  // ===========================================
+  function initResumePreview() {
+    var btn = document.querySelector('.resume-preview-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+      openResumeModal(btn.getAttribute('data-url'));
+    });
+  }
+
+  function openResumeModal(url) {
+    // Create modal if it doesn't exist yet
+    var modal = document.getElementById('resume-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'resume-modal';
+      modal.className = 'resume-modal';
+      modal.innerHTML =
+        '<div class="resume-modal-content">' +
+        '<button class="resume-modal-close" aria-label="Close preview">&times;</button>' +
+        '<embed src="' + url + '" type="application/pdf">' +
+        '</div>';
+      document.body.appendChild(modal);
+
+      // Close on overlay click
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeResumeModal();
+      });
+
+      // Close button
+      modal.querySelector('.resume-modal-close').addEventListener('click', closeResumeModal);
+
+      // Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeResumeModal();
+      });
+    }
+
+    // Force reflow before adding class for transition
+    void modal.offsetWidth;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeResumeModal() {
+    var modal = document.getElementById('resume-modal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
   }
 })();

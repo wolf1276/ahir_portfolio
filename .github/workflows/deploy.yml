@@ -10,7 +10,7 @@ name: Build Resume & Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [main, ft-seo-friendly]
 
 # Prevent concurrent runs; cancel in-progress runs on new push
 concurrency:
@@ -88,5 +88,5 @@ jobs:
           git add Anand_Kore_Resume.pdf
           # Only commit if there are actual changes
           git diff --cached --quiet || git commit -m "chore: recompile resume PDF [skip ci]"
-          git pull --rebase origin main
+          git pull --rebase origin ${{ github.ref_name }}
           git push
