@@ -1,6 +1,6 @@
 # DevOps Portfolio Site
 
-A sleek, data-driven static portfolio website designed explicitly for DevOps, SRE, and Cloud Engineers. It prioritizes information density, technical readability, and a professional "dashboard" aesthetic over flashy animations.
+A fast, data-driven static portfolio website featuring a striking "Cyber-Editorial" aesthetic—pairing elegant serif typography with high-contrast, technical accents. Designed specifically for developers who want a premium, magazine-quality web presence without sacrificing speed or simplicity.
 
 Built with **plain HTML5, CSS3, and Vanilla JavaScript**. Zero build steps, zero node modules (except a CDN link for parsing YAML), and ready to deploy instantly.
 

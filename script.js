@@ -88,9 +88,13 @@
     }
 
     var observer = new IntersectionObserver(function (entries) {
+      var delay = 0;
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          setTimeout(function() {
+            entry.target.classList.add('visible');
+          }, delay);
+          delay += 100;
           observer.unobserve(entry.target);
         }
       });
