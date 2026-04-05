@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anand Kore - DevOps Engineer</title>
+  <title>Blog — Anand Kore</title>
   <link rel="icon" type="image/png" href="favicon.ico">
   <meta name="description"
-    content="DevOps Engineer with 3+ years of experience in CI/CD, containerization, observability, and cloud-native deployments.">
+    content="Technical blog posts on DevOps, CI/CD, containerization, infrastructure automation, and monitoring by Anand Kore.">
 
   <!-- OG Meta Tags -->
-  <meta property="og:title" content="Anand Kore - DevOps Engineer">
+  <meta property="og:title" content="Blog — Anand Kore">
   <meta property="og:description"
-    content="3+ years building CI/CD pipelines, containerizing microservices, and architecting observability stacks. Docker, Kubernetes, Terraform, AWS.">
+    content="Technical blog posts on DevOps, CI/CD, containerization, infrastructure automation, and monitoring.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://theoneoh1.github.io/">
+  <meta property="og:url" content="https://theoneoh1.github.io/blog.html">
   <meta property="og:image" content="https://theoneoh1.github.io/og-preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Anand Kore - DevOps Engineer">
+  <meta name="twitter:title" content="Blog — Anand Kore">
   <meta name="twitter:description"
-    content="3+ years building CI/CD pipelines, containerizing microservices, and architecting observability stacks.">
+    content="Technical blog posts on DevOps, CI/CD, containerization, infrastructure automation, and monitoring.">
   <meta name="twitter:image" content="https://theoneoh1.github.io/og-preview.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,19 +31,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-page="blog">
 
   <!-- Nav -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#about" class="nav-name">anand kore</a>
+      <a href="index.html" class="nav-name">anand kore</a>
       <div class="nav-links" id="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="blog.html">Blog</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#education">Education</a>
+        <a href="blog.html" class="active">Blog</a>
       </div>
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -67,21 +67,11 @@
     </div>
   </nav>
 
+  <!-- Blog Content -->
   <div class="container">
-    <!-- About - rendered from content.yaml -->
-    <section class="about" id="about"></section>
-
-    <!-- Skills - rendered from content.yaml -->
-    <section id="skills"></section>
-
-    <!-- Experience - rendered from content.yaml -->
-    <section id="experience"></section>
-
-    <!-- Projects - rendered from content.yaml -->
-    <section id="projects"></section>
-
-    <!-- Education - rendered from content.yaml -->
-    <section id="education"></section>
+    <section class="blog-page" id="blog-content">
+      <!-- Rendered from content.yaml by script.js -->
+    </section>
   </div>
 
   <!-- Footer -->

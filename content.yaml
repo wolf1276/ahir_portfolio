@@ -112,3 +112,25 @@ education:
   - degree: Bachelor of Engineering in Information Technology
     institution: PVPIT, Sangli - Shivaji University
     year: "2018"
+
+blogs:
+  - title: "How I Cut CI/CD Pipeline Time from 30 Minutes to 2 Minutes"
+    summary: "A deep-dive into migrating a legacy React frontend pipeline from Node 16 + Webpack to Node 24 + Vite, replacing SSH deployments with artifact-based releases and PM2 process management."
+    url: https://medium.com/@anandkore1/how-i-cut-cicd-pipeline-time
+    platform: medium
+    date: "2026-04-03"
+    tags: [CI/CD, GitLab, Vite, React]
+
+  - title: "Blackbox-Lite: From a basic Bash Script to a Monitoring Tool"
+    summary: "The origin story of building an automated, all-seeing monitoring solution - evolving from reactive troubleshooting to proactive infrastructure observability with Prometheus integration."
+    url: https://medium.com/@anandkore1/how-i-stopped-manually-pinging-vms-during-an-infrastructure-crisis-b1f1b2d8890b
+    platform: medium
+    date: "2026-04-04"
+    tags: [Bash, Prometheus, Monitoring, Observability, Linux]
+
+  - title: "How to Gracefully Handle Downtime with Nginx"
+    summary: "Don't show an ugly 503 default error page to your users instead use this simple Nginx trick to handle a proper Downtime message."
+    url: https://medium.com/@anandkore1/how-to-gracefully-handle-downtime-with-nginx-and-a-503-status-code-5d16326e1add
+    platform: medium
+    date: "2026-03-24"
+    tags: [Nginx, Downtime, 503, Webserver]

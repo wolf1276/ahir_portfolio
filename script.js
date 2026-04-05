@@ -13,7 +13,10 @@
     github: '<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836a9.578 9.578 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>',
     download: '<svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>',
     preview: '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>',
-    external: '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>'
+    external: '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>',
+    medium: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42s-3.39-2.88-3.39-6.42 1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zm2.94 0c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75 1.19 2.58 1.19 5.75z"/></svg>',
+    hashnode: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.65 10.4a3.27 3.27 0 000 4.62l6.32 6.33a3.27 3.27 0 004.62 0l6.33-6.33a3.27 3.27 0 000-4.62L13.6 4.07a3.27 3.27 0 00-4.63 0L2.65 10.4zm8.56-1.47a3.1 3.1 0 110 6.19 3.1 3.1 0 010-6.19z"/></svg>',
+    dev: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6v4.36h.58c.37 0 .67-.08.84-.23.2-.17.31-.48.31-.95v-2c0-.5-.11-.81-.31-.95zm13.37-7.13H3.2A2.13 2.13 0 001 5.04v13.92c0 1.17.96 2.12 2.21 2.12h17.58c1.25 0 2.21-.95 2.21-2.12V5.04c0-1.17-.96-2.12-2.21-2.12zM8.89 14.32c-.38.42-.93.63-1.62.63H5.12V9.05h2.17c.69 0 1.23.2 1.6.63.34.39.52.94.52 1.65v1.34c0 .71-.18 1.26-.52 1.65zm4.46-.36c0 .7-.28 1.3-.84 1.82-.25.23-.59.35-1.02.35-.42 0-.77-.12-1.03-.36l-.07-.08V16h-1.41V9.05h1.41v.61a1.57 1.57 0 011.1-.44c.43 0 .77.12 1.02.36.56.51.84 1.12.84 1.82v2.56zm5.18-1.15h-1.67v1.67h-.88v-1.67h-1.66v-.88h1.66v-1.67h.88v1.67h1.67v.88z"/></svg>'
   };
 
   // --- Helpers ---
@@ -238,8 +241,71 @@
   }
 
   // ===========================================
+  // BLOG RENDERER
+  // ===========================================
+  function formatBlogDate(dateStr) {
+    var d = new Date(dateStr);
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  }
+
+  function renderBlog(data) {
+    var el = document.getElementById('blog-content');
+    if (!el || !data || !data.length) {
+      if (el) {
+        el.innerHTML =
+          '<div class="blog-header">' +
+          '<h1 class="section-title">Blog</h1>' +
+          '</div>' +
+          '<p class="blog-empty">No posts yet — check back soon.</p>';
+      }
+      return;
+    }
+
+    // Sort by date descending (newest first)
+    var sorted = data.slice().sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    });
+
+    var entries = sorted.map(function (post) {
+      var platformIcon = ICONS[post.platform] || '';
+      var platformLabel = post.platform ? post.platform.charAt(0).toUpperCase() + post.platform.slice(1) : 'Blog';
+
+      var tags = (post.tags || []).map(function (t) {
+        return '<span class="project-tag">' + esc(t) + '</span>';
+      }).join('');
+
+      var dateFormatted = post.date ? formatBlogDate(post.date) : '';
+
+      return '<article class="blog-entry fade-in">' +
+        '<div class="blog-entry-meta">' +
+          '<span class="blog-date">' + esc(dateFormatted) + '</span>' +
+          '<span class="blog-platform">' + platformIcon + ' ' + esc(platformLabel) + '</span>' +
+        '</div>' +
+        '<div class="blog-entry-content">' +
+          '<h2 class="blog-title">' + esc(post.title) + '</h2>' +
+          '<p class="blog-summary">' + esc(post.summary) + '</p>' +
+          (tags ? '<div class="blog-entry-tags">' + tags + '</div>' : '') +
+        '</div>' +
+        '<a href="' + esc(post.url) + '" target="_blank" rel="noopener" class="blog-entry-link" aria-label="Read article">' + ICONS.external + '</a>' +
+      '</article>';
+    }).join('');
+
+    el.innerHTML =
+      '<div class="blog-header">' +
+      '<h1 class="section-title">Blog</h1>' +
+      '<p class="blog-subtitle">Thoughts on DevOps, infrastructure, and the tools I build.</p>' +
+      '</div>' +
+      '<div class="blog-list">' + entries + '</div>';
+  }
+
+  // ===========================================
   // FETCH & RENDER
   // ===========================================
+  // Detect which page we're on
+  var isBlogPage = document.body.getAttribute('data-page') === 'blog';
+
   fetch('content.yaml')
     .then(function (res) {
       if (!res.ok) throw new Error('Failed to load content.yaml');
@@ -248,22 +314,30 @@
     .then(function (text) {
       var data = jsyaml.load(text);
 
-      renderAbout(data.about);
-      renderSkills(data.skills);
-      renderExperience(data.experience);
-      renderProjects(data.projects);
-      renderEducation(data.education);
-      renderFooter(data.about ? data.about.links : []);
+      if (isBlogPage) {
+        // Blog page: only render blog + footer
+        renderBlog(data.blogs);
+        renderFooter(data.about ? data.about.links : []);
+      } else {
+        // Main page: render all sections
+        renderAbout(data.about);
+        renderSkills(data.skills);
+        renderExperience(data.experience);
+        renderProjects(data.projects);
+        renderEducation(data.education);
+        renderFooter(data.about ? data.about.links : []);
 
-      // Update page title from content
-      if (data.about && data.about.name && data.about.title) {
-        document.title = data.about.name + ' - ' + data.about.title;
+        // Update page title from content
+        if (data.about && data.about.name && data.about.title) {
+          document.title = data.about.name + ' - ' + data.about.title;
+        }
+
+        initScrollTracking();
+        initResumePreview();
       }
 
-      // Init features that depend on rendered content
+      // Init features that depend on rendered content (both pages)
       initFadeIn();
-      initScrollTracking();
-      initResumePreview();
     })
     .catch(function (err) {
       console.error('Content load error:', err);
