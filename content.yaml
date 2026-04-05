@@ -114,12 +114,12 @@ education:
     year: "2018"
 
 blogs:
-  - title: "How I Cut CI/CD Pipeline Time from 30 Minutes to 2 Minutes"
-    summary: "A deep-dive into migrating a legacy React frontend pipeline from Node 16 + Webpack to Node 24 + Vite, replacing SSH deployments with artifact-based releases and PM2 process management."
-    url: https://medium.com/@anandkore1/how-i-cut-cicd-pipeline-time
-    platform: medium
-    date: "2026-04-03"
-    tags: [CI/CD, GitLab, Vite, React]
+  # - title: "How I Cut CI/CD Pipeline Time from 30 Minutes to 2 Minutes"
+  #   summary: "A deep-dive into migrating a legacy React frontend pipeline from Node 16 + Webpack to Node 24 + Vite, replacing SSH deployments with artifact-based releases and PM2 process management."
+  #   url: https://medium.com/@anandkore1/how-i-cut-cicd-pipeline-time
+  #   platform: medium
+  #   date: "2026-04-03"
+  #   tags: [CI/CD, GitLab, Vite, React]
 
   - title: "Blackbox-Lite: From a basic Bash Script to a Monitoring Tool"
     summary: "The origin story of building an automated, all-seeing monitoring solution - evolving from reactive troubleshooting to proactive infrastructure observability with Prometheus integration."
@@ -134,3 +134,10 @@ blogs:
     platform: medium
     date: "2026-03-24"
     tags: [Nginx, Downtime, 503, Webserver]
+
+  - title: "Couch Control: I Was Too Lazy to Get Off the Couch, So I Built This"
+    summary: "Are you fed up of all those remote app asking for permissions to control your media player?, try this self-hosted remote control for your media player."
+    url: https://couch-control.hashnode.dev/i-was-too-lazy-to-get-off-the-couch-so-i-built-this
+    platform: hashnode
+    date: "2026-02-02"
+    tags: [Python, FastAPI, WebSocket, Self-hosted]
