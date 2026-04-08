@@ -114,13 +114,6 @@ education:
     year: "2018"
 
 blogs:
-  # - title: "How I Cut CI/CD Pipeline Time from 30 Minutes to 2 Minutes"
-  #   summary: "A deep-dive into migrating a legacy React frontend pipeline from Node 16 + Webpack to Node 24 + Vite, replacing SSH deployments with artifact-based releases and PM2 process management."
-  #   url: https://medium.com/@anandkore1/how-i-cut-cicd-pipeline-time
-  #   platform: medium
-  #   date: "2026-04-03"
-  #   tags: [CI/CD, GitLab, Vite, React]
-
   - title: "Blackbox-Lite: From a basic Bash Script to a Monitoring Tool"
     summary: "The origin story of building an automated, all-seeing monitoring solution - evolving from reactive troubleshooting to proactive infrastructure observability with Prometheus integration."
     url: https://medium.com/@anandkore1/how-i-stopped-manually-pinging-vms-during-an-infrastructure-crisis-b1f1b2d8890b
@@ -141,3 +134,10 @@ blogs:
     platform: hashnode
     date: "2026-02-02"
     tags: [Python, FastAPI, WebSocket, Self-hosted]
+
+  - title: "How we Stopped 30-Minute Deployments and Saved Our Team 95 Hours a Month"
+    summary: "A deep-dive into migrating a legacy React frontend pipeline from Node 16 + Webpack to Node 24 + Vite, replacing SSH deployments with artifact-based releases and PM2 process management."
+    url: https://medium.com/@anandkore1/how-we-stopped-30-minute-deployments-and-saved-our-team-95-hours-a-month-0d0dc1bcce98
+    platform: medium
+    date: "2026-04-08"
+    tags: [CI/CD, GitLab, Vite, React]
