@@ -141,3 +141,10 @@ blogs:
     platform: medium
     date: "2026-04-08"
     tags: [CI/CD, GitLab, Vite, React]
+
+  - title: "My Portfolio Site Has a CI/CD Pipeline. Here’s Why."
+    summary: "I wanted my portfolio to be more than just a static page - I wanted it to be a living testament to my DevOps skills. So I built a CI/CD pipeline to automate the entire deployment process."
+    url: https://medium.com/@anandkore1/my-portfolio-site-has-a-ci-cd-pipeline-heres-why-63ac5cbaaddb
+    platform: medium
+    date: "2026-04-14"
+    tags: [CI/CD, GitHub Actions, LaTeX, Portfolio]
