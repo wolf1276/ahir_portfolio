@@ -9,13 +9,14 @@
   --bg: #0a0a0a;
   --surface: #111111;
   --surface-hover: #1a1a1a;
-  --primary: #f59e0b;
+  --primary: #f59e0b; /* Amber */
   --secondary: #d97706;
-  --accent: #f59e0b;
+  --accent: #10b981; /* Muted Green */
   --text: #a1a1aa;
   --text-bright: #eaeaea;
   --muted: #71717a;
   --border: rgba(255, 255, 255, 0.08);
+  --glow: rgba(245, 158, 11, 0.15);
 
   --radius: 8px;
   --transition: 400ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -30,17 +31,16 @@
 /* --- Light theme tokens --- */
 [data-theme="light"] {
   --bg: #fdfdfc;
-  --surface: #f3f3f1;
-  --surface-hover: #e8e8e5;
-  --primary: #ff3c00;
-  /* Neon Orange */
-  --secondary: #ff6a33;
-  --accent: #00e676;
-  /* Mint Green */
-  --text: #1a1a1a;
-  --text-bright: #000000;
+  --surface: #f4f4f2;
+  --surface-hover: #e9e9e6;
+  --primary: #eab308; /* Soft Yellow */
+  --secondary: #ca8a04;
+  --accent: #10b981; /* Muted Green */
+  --text: #3f3f46;
+  --text-bright: #18181b;
   --muted: #71717a;
-  --border: #d4d4d8;
+  --border: rgba(0, 0, 0, 0.08);
+  --glow: rgba(234, 179, 8, 0.1);
 }
 
 /* --- Reset --- */
@@ -145,21 +145,42 @@ ol {
 
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 12px;
+  margin-left: auto; /* Shift to the right */
+  margin-right: 48px; /* Breathing room before actions */
 }
 
 .nav-links a {
+  padding: 8px 24px;
+  border-radius: 99px;
   font-family: var(--font-mono);
   font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: var(--muted);
-  border: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none !important;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--text-bright);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.15), 
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .nav-links a:hover,
+[data-theme="light"] .nav-links a.active {
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.05), 
+    inset 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .nav-actions {
@@ -325,7 +346,7 @@ section:last-of-type {
   content: '';
   position: absolute;
   inset: -20px;
-  background: radial-gradient(circle, rgba(204, 255, 0, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
   border-radius: 50%;
   z-index: 1;
   transition: all 0.5s ease;
@@ -336,7 +357,7 @@ section:last-of-type {
   border-color: var(--primary);
   box-shadow: 
     0 30px 60px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(204, 255, 0, 0.2);
+    0 0 30px var(--glow);
 }
 
 .about-name {
@@ -456,7 +477,7 @@ section:last-of-type {
   border-color: var(--primary);
   color: var(--primary);
   transform: translateY(-2px) scale(1.1);
-  box-shadow: 0 0 20px rgba(204, 255, 0, 0.2);
+  box-shadow: 0 0 20px var(--glow);
 }
 
 
@@ -914,7 +935,7 @@ section:last-of-type {
   width: 2px;
   background: linear-gradient(to bottom, transparent, var(--primary), var(--accent), transparent);
   transform: translateX(-50%);
-  box-shadow: 0 0 10px rgba(204, 255, 0, 0.3);
+  opacity: 0.4;
 }
 
 .achieve-node-wrapper {
@@ -1021,7 +1042,7 @@ section:last-of-type {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   color: var(--text-bright);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.3;
 }
 
@@ -1072,7 +1093,7 @@ section:last-of-type {
   .achieve-node-wrapper:hover .achieve-content {
     border-color: var(--primary);
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(204, 255, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow);
   }
   
   .achieve-node-wrapper:hover .achieve-position,
@@ -1600,7 +1621,7 @@ section:last-of-type {
 
 .blog-entry:hover .blog-platform {
   border-color: var(--primary);
-  background: rgba(204, 255, 0, 0.05);
+  background: var(--glow);
 }
 
 [data-theme="light"] .blog-entry:hover .blog-platform {
@@ -1693,7 +1714,7 @@ section:last-of-type {
 }
 
 .gh-chart-wrapper:hover {
-  border-color: rgba(204, 255, 0, 0.3);
+  border-color: var(--glow);
 }
 
 .gh-chart-header {
@@ -2098,7 +2119,7 @@ section:last-of-type {
 .skill-icon-wrapper:hover {
   transform: scale(1.1);
   border-color: var(--glow-color, var(--primary));
-  box-shadow: 0 0 15px var(--glow-color, rgba(204, 255, 0, 0.2));
+  box-shadow: 0 0 15px var(--glow-color, var(--glow));
 }
 
 .skill-icon-wrapper:hover .skill-tooltip {
