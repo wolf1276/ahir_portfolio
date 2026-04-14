@@ -146,6 +146,8 @@ projects:
       and tamper-proof coordination between multiple drones.
     url: ADD_GITHUB_LINK
     image: "/images/zk-drone.png"
+    status: "In Progress"
+    progress: 85
     tags: [Blockchain, Solidity, Security, Distributed Systems]
 
   - name: Autonomous Dual Drone System
@@ -155,7 +157,9 @@ projects:
       which autonomously navigates and performs actions like spraying.
     url: ADD_GITHUB_LINK
     image: "/images/autonomous-drone.png"
-    tags: [Python, YOLO, DroneKit, MAVLink, Computer Vision]
+    status: "Deployed"
+    progress: 100
+    tags: [Python, YOLO, DroneKit, MMAVLink, Computer Vision]
 
   - name: Self-Designed Modular Drone Frame (Patent Applied)
     description: >
@@ -164,6 +168,8 @@ projects:
       Patent filed.
     url: ADD_GITHUB_LINK
     image: "/images/drone-frame.png"
+    status: "Completed"
+    progress: 100
     tags: [CAD, Fusion 360, Mechanical Design]
 
   - name: Agricultural Drone System with Dew Node
@@ -172,6 +178,8 @@ projects:
       for environmental sensing and precision farming.
     url: ADD_GITHUB_LINK
     image: "/images/agri-drone.png"
+    status: "Building"
+    progress: 45
     tags: [IoT, Drones, Sensors]
 
   - name: MindPal – Stress Relief & Sleep System
@@ -180,6 +188,8 @@ projects:
       and sleep improvement using immersive environments.
     url: ADD_GITHUB_LINK
     image: "/images/mindpal.png"
+    status: "Paused"
+    progress: 30
     tags: [VR, HealthTech]
 
   - name: AI Robot with Emotion Display
@@ -188,6 +198,8 @@ projects:
       displaying emotional responses based on sensor input.
     url: ADD_GITHUB_LINK
     image: "/images/robot.png"
+    status: "Building"
+    progress: 65
     tags: [ESP32, Arduino, Embedded]
 
   - name: ROS 6DOF Robotic Arm
@@ -196,6 +208,8 @@ projects:
       for motion planning and control.
     url: ADD_GITHUB_LINK
     image: "/images/robot.png"
+    status: "Completed"
+    progress: 100
     tags: [ROS2, Robotics, CAD]
 # ============================================
 # EDUCATION

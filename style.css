@@ -823,6 +823,81 @@ section:last-of-type {
   color: var(--text-bright);
 }
 
+/* --- Project Status & CI/CD System --- */
+.project-status-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+  z-index: 10;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.project-premium-card:hover .project-status-badge {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Status Colors (Subtle Tone) */
+.completed .status-dot { background: #10B981; }
+.deployed .status-dot { background: #64748B; }
+.in-progress .status-dot { background: #EAB308; }
+.building .status-dot { background: #F59E0B; }
+.paused .status-dot { background: #6B7280; }
+
+@keyframes status-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.pulse-building, .pulse-in-progress {
+  animation: status-pulse 2s infinite ease-in-out;
+}
+
+/* Project Progress Bar */
+.project-progress-container {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.project-progress-bar {
+  height: 100%;
+  background: var(--primary);
+  opacity: 0.4;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-premium-card:hover .project-progress-bar {
+  opacity: 1;
+}
+
 /* --- Achievements Journey Tree --- */
 .achievements-tree {
   position: relative;
@@ -1015,94 +1090,252 @@ section:last-of-type {
 }
 
 /* --- Education --- */
-.edu-premium-list {
+/* --- Section Header Customization --- */
+#education .section-title::after {
+  opacity: 0.3;
+  width: 20px; /* Reduced to avoid competition with card accents */
+}
+
+/* --- Education Progression System --- */
+.edu-row-container {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 16px;
 }
 
-.edu-premium-card {
+/* Vertical Progression Line (Directional Growth) */
+.edu-row-container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 40px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to top, 
+    rgba(245, 158, 11, 0) 0%, 
+    rgba(245, 158, 11, 0.3) 40%, 
+    var(--primary) 100%
+  );
+  border-radius: 2px;
+}
+
+.edu-row-card {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 32px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  align-items: center;
+  padding: 24px 32px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px) translateX(calc(var(--index) * 8px)); /* Directional Flow */
 }
 
-@media (hover: hover) {
-  .edu-premium-card:hover {
-    transform: translateY(-4px);
-    background: var(--surface-hover);
-    border-color: var(--primary);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  }
+/* Scroll Reveal */
+.edu-row-card.reveal {
+  opacity: 0.85; /* Older cards are slightly muted */
+  transform: translateY(0) translateX(calc(var(--index) * 8px));
 }
 
-.edu-card-left {
+/* Highlight (Present Day / Current) */
+.edu-row-card.edu-row-highlight {
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  opacity: 1 !important;
+  transform: translateY(0) translateX(0); /* Anchored at center */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.edu-row-card.edu-row-highlight .edu-row-degree {
+  color: var(--text-bright);
+}
+
+/* Left Accent Progression Indicator */
+.edu-row-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--primary);
+  border-radius: 0 4px 4px 0;
+  transition: all 0.5s ease;
+  opacity: 0.2;
+}
+
+.edu-row-card.reveal::after {
+  height: 25%;
+}
+
+.edu-row-card.edu-row-highlight::after {
+  height: 60%;
+  opacity: 1;
+}
+
+/* Interaction: Visual Lift */
+.edu-row-card:hover {
+  opacity: 1 !important;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-6px) translateX(calc(var(--index) * 6px));
+}
+
+.edu-row-highlight:hover {
+  transform: translateY(-8px) translateX(0);
+  border-color: var(--primary);
+}
+
+.edu-row-card:hover::after {
+  height: 85%;
+  opacity: 1;
+}
+
+.edu-row-left {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  align-items: center;
+  gap: 24px;
 }
 
-.edu-card-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
+.edu-row-logo-wrapper {
+  width: 52px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   flex-shrink: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--muted);
 }
 
-.edu-icon-svg {
+.edu-row-card.edu-row-highlight .edu-row-logo-wrapper {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.edu-row-logo {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.edu-row-logo-placeholder {
   width: 20px;
   height: 20px;
-}
-
-.edu-icon-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  background: var(--muted);
   border-radius: 50%;
-  padding: 4px;
+  opacity: 0.3;
 }
 
-.edu-card-info {
+.edu-row-info {
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
 
-.edu-degree {
+.edu-row-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.edu-row-degree {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
-  color: var(--text-bright);
-  font-weight: 600;
-}
-
-.edu-institution {
-  font-size: 1rem;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 700;
   color: var(--text);
+  margin: 0;
+  transition: color 0.3s ease;
 }
 
-.edu-card-right {
+.edu-current-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(16, 185, 129, 0.08);
+  color: #10B981;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.edu-row-institution {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.edu-row-right {
+  text-align: right;
   flex-shrink: 0;
 }
 
-.edu-year {
+.edu-row-year {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 13px;
   color: var(--muted);
-  letter-spacing: 0.5px;
+  opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+  .edu-row-container {
+    padding-left: 0;
+  }
+  .edu-row-container::before {
+    display: none;
+  }
+  .edu-row-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px;
+    transform: none !important;
+  }
+  .edu-row-left {
+    gap: 16px;
+  }
+  .edu-row-right {
+    text-align: left;
+    width: 100%;
+    padding-left: 68px;
+  }
+}
+
+@media (max-width: 768px) {
+  .edu-stack-card {
+    position: relative;
+    top: 0 !important;
+    padding-top: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .edu-stack-card-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .edu-stack-right {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+
 
 /* --- Footer --- */
 .footer {

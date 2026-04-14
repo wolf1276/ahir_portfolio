@@ -251,11 +251,23 @@
         return '<span class="project-tag-pill">' + esc(t) + '</span>';
       }).join('');
 
-      var imageSrc = p.image || '/favicon.png'; // Fallback if no image
+      var imageSrc = p.image || '/favicon.png';
+
+      var statusClass = (p.status || '').toLowerCase().replace(' ', '-');
+      var statusHtml = p.status ? 
+          '<div class="project-status-badge ' + statusClass + '" title="Current project status">' +
+            '<span class="status-dot pulse-' + statusClass + '"></span>' + esc(p.status) + 
+          '</div>' : '';
+
+      var progressHtml = p.progress !== undefined ? 
+          '<div class="project-progress-container">' +
+            '<div class="project-progress-bar" style="width: ' + p.progress + '%"></div>' +
+          '</div>' : '';
 
       return '<div class="project-premium-card fade-in visible">' +
         '<div class="project-card-image-wrapper">' +
           '<img src="' + esc(imageSrc) + '" alt="' + esc(p.name) + '" class="project-card-image" />' +
+          statusHtml +
           '<div class="project-card-overlay">' +
             '<a href="' + esc(p.url) + '" target="_blank" rel="noopener" class="project-view-btn">View Project</a>' +
           '</div>' +
@@ -265,6 +277,7 @@
           '<p class="project-card-desc">' + esc(p.description) + '</p>' +
           '<div class="project-card-tags">' + tags + '</div>' +
         '</div>' +
+        progressHtml +
       '</div>';
     }).join('');
 
@@ -310,23 +323,32 @@
     var el = document.getElementById('education');
     if (!el || !data) return;
 
-    var eduIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="edu-icon-svg"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>';
+    // Sort by latest end year or start year
+    var sortedData = data.sort(function(a, b) {
+      var yearA = parseInt(a.year.split('-')[0]) || 0;
+      var yearB = parseInt(b.year.split('-')[0]) || 0;
+      return yearB - yearA;
+    });
 
-    var items = data.map(function (e) {
+    var items = sortedData.map(function (e, index) {
+      var isLatest = index === 0;
       var iconHtml = e.icon 
-        ? '<img src="' + e.icon + '" alt="' + esc(e.institution) + '" class="edu-icon-img" />'
-        : eduIcon;
+        ? '<img src="' + e.icon + '" alt="' + esc(e.institution) + '" class="edu-row-logo" />'
+        : '<div class="edu-row-logo-placeholder"></div>';
 
-      return '<div class="edu-premium-card fade-in visible">' +
-          '<div class="edu-card-left">' +
-            '<div class="edu-card-icon">' + iconHtml + '</div>' +
-            '<div class="edu-card-info">' +
-              '<h3 class="edu-degree">' + esc(e.degree) + '</h3>' +
-              '<p class="edu-institution">' + esc(e.institution) + '</p>' +
+      return '<div class="edu-row-card ' + (isLatest ? 'edu-row-highlight' : '') + '" style="--index: ' + index + '">' +
+          '<div class="edu-row-left">' +
+            '<div class="edu-row-logo-wrapper">' + iconHtml + '</div>' +
+            '<div class="edu-row-info">' +
+              '<div class="edu-row-title-group">' +
+                '<h3 class="edu-row-degree">' + esc(e.degree) + '</h3>' +
+                (isLatest ? '<span class="edu-current-badge">Current</span>' : '') +
+              '</div>' +
+              '<p class="edu-row-institution">' + esc(e.institution) + '</p>' +
             '</div>' +
           '</div>' +
-          '<div class="edu-card-right">' +
-            '<span class="edu-year">' + esc(e.year) + '</span>' +
+          '<div class="edu-row-right">' +
+            '<span class="edu-row-year">' + esc(e.year) + '</span>' +
           '</div>' +
       '</div>';
     }).join('');
@@ -335,7 +357,22 @@
       '<div class="exp-section-header">' +
         '<h2 class="section-title">Education</h2>' +
       '</div>' +
-      '<div class="edu-premium-list">' + items + '</div>';
+      '<div class="edu-row-container">' + items + '</div>';
+
+    // Scroll fade observer
+    if ('IntersectionObserver' in window) {
+      var eduFadeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      el.querySelectorAll('.edu-row-card').forEach(function(card) {
+        eduFadeObserver.observe(card);
+      });
+    }
   }
 
   function renderFooter(links) {
