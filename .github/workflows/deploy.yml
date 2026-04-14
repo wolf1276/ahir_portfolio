@@ -23,7 +23,7 @@ jobs:
       - name: Compile LaTeX Resume
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: resume/Ahir_Sarkar_Resume.tex
+          root_file: Ahir_Sarkar_Resume.tex
           working_directory: resume/
           compiler: latexmk
           args: -pdf -interaction=nonstopmode
