@@ -185,3 +185,25 @@ education:
 # ============================================
 
 blogs: []
+
+# ============================================
+# ACHIEVEMENTS
+# ============================================
+
+achievements:
+  - year: "2025"
+    title: "YeeSist Finals, Malaysia (International Level)"
+    position: "Finalist"
+    description: "Competed internationally presenting innovative robotics solutions on drones and autonmus systems."
+  - year: "2025"
+    title: "IEEE Robotics Competition"
+    position: "3rd Prize"
+    description: "Built agricultural drone integrated with due node."
+  - year: "2026"
+    title: "GeeksforGeeks Hackathon"
+    position: "4th Prize"
+    description: "Built Data Visualization tool ."
+  - year: "2026"
+    title: "Axiora"
+    position: "1st Prize"
+    description: "Zero-knowledge based drone communication and verification system"

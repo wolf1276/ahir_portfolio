@@ -272,6 +272,37 @@
     buildContent(false);
   }
 
+  function renderAchievements(data) {
+    var el = document.getElementById('achievements');
+    if (!el || !data) return;
+
+    var items = data.map(function (a, index) {
+      // Alternate left/right for tree branches
+      var sideClass = index % 2 === 0 ? 'achieve-left' : 'achieve-right';
+      
+      return '<div class="achieve-node-wrapper fade-in ' + sideClass + '">' +
+        '<div class="achieve-branch"></div>' +
+        '<div class="achieve-node">' +
+          '<div class="achieve-node-core"></div>' +
+          '<div class="achieve-node-glow"></div>' +
+        '</div>' +
+        '<div class="achieve-content">' +
+          '<div class="achieve-year">' + esc(a.year) + '</div>' +
+          '<h3 class="achieve-title">' + esc(a.title) + '</h3>' +
+          '<div class="achieve-position">' + esc(a.position) + '</div>' +
+          '<p class="achieve-desc">' + esc(a.description) + '</p>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    el.innerHTML =
+      '<h2 class="section-title">My Journey</h2>' +
+      '<div class="achievements-tree">' +
+        '<div class="achievements-spine"></div>' +
+        items +
+      '</div>';
+  }
+
   function renderEducation(data) {
     var el = document.getElementById('education');
     if (!el || !data) return;
@@ -541,6 +572,7 @@
         renderAbout(data.about);
         renderSkills(data.skills);
         renderExperience(data.experience);
+        renderAchievements(data.achievements);
         renderEducation(data.education);
         renderGitHubStats(data.about.github_username);
         renderQuote();

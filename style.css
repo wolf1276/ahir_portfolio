@@ -759,6 +759,197 @@ section:last-of-type {
   border-radius: var(--radius);
 }
 
+/* --- Achievements Journey Tree --- */
+.achievements-tree {
+  position: relative;
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 40px 0;
+}
+
+.achievements-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--primary), var(--accent), transparent);
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(204, 255, 0, 0.3);
+}
+
+.achieve-node-wrapper {
+  position: relative;
+  width: 50%;
+  margin-bottom: 60px;
+  clear: both;
+}
+
+.achieve-left {
+  float: left;
+  text-align: right;
+  padding-right: 40px;
+}
+
+.achieve-right {
+  float: right;
+  text-align: left;
+  padding-left: 40px;
+  margin-top: 60px;
+}
+
+.achieve-branch {
+  position: absolute;
+  top: 24px;
+  width: 40px;
+  height: 2px;
+  background: var(--border);
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.achieve-left .achieve-branch {
+  right: 0;
+}
+.achieve-right .achieve-branch {
+  left: 0;
+}
+
+.achieve-node {
+  position: absolute;
+  top: 16px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--primary);
+  z-index: 2;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achieve-left .achieve-node {
+  right: -9px;
+}
+.achieve-right .achieve-node {
+  left: -9px;
+}
+
+.achieve-node-core {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  transition: all 0.4s ease;
+}
+
+.achieve-node-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0;
+  filter: blur(8px);
+  transition: all 0.4s ease;
+}
+
+.achieve-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  position: relative;
+  z-index: 3;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.achieve-year {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--primary);
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.achieve-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--text-bright);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.achieve-position {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 16px;
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.achieve-desc {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 8px;
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+/* Hover effects */
+@media (hover: hover) {
+  .achieve-node-wrapper:hover .achieve-branch {
+    background: var(--primary);
+    box-shadow: 0 0 8px var(--primary);
+  }
+  
+  .achieve-node-wrapper:hover .achieve-node {
+    transform: scale(1.3);
+    border-color: var(--accent);
+  }
+  
+  .achieve-node-wrapper:hover .achieve-node-core {
+    background: var(--primary);
+  }
+  
+  .achieve-node-wrapper:hover .achieve-node-glow {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  
+  .achieve-node-wrapper:hover .achieve-content {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(204, 255, 0, 0.1);
+  }
+  
+  .achieve-node-wrapper:hover .achieve-position,
+  .achieve-node-wrapper:hover .achieve-desc {
+    opacity: 1;
+    max-height: 200px;
+    transform: translateY(0);
+  }
+}
+
+.achievements-tree::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /* --- Education --- */
 .edu-list {
   display: flex;
@@ -1987,6 +2178,52 @@ section:last-of-type {
   .project-tag {
     font-size: 9px;
     padding: 5px 10px;
+  }
+
+  /* Achievements */
+  .achievements-spine {
+    left: 20px;
+    transform: none;
+  }
+  
+  .achieve-node-wrapper {
+    width: 100%;
+    float: none;
+    padding-left: 60px;
+    padding-right: 0;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  .achieve-right {
+    margin-top: 0;
+  }
+  
+  .achieve-branch {
+    left: 20px;
+    width: 40px;
+  }
+
+  .achieve-left .achieve-branch,
+  .achieve-right .achieve-branch {
+    left: 20px;
+    right: auto;
+  }
+  
+  .achieve-node {
+    left: 11px !important;
+  }
+  
+  .achieve-content {
+    padding: 16px;
+  }
+  
+  .achieve-position,
+  .achieve-desc {
+    opacity: 1;
+    max-height: 200px;
+    transform: translateY(0);
   }
 
   /* Education */
