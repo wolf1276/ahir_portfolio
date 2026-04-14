@@ -1,20 +1,20 @@
 # ============================================
-# PORTFOLIO CONTENT - Edit this file to update your site
-# Changes here will automatically reflect on the page.
-# No need to touch index.html, style.css, or script.js.
+# PORTFOLIO CONTENT - Edit this file to update the site
 # ============================================
 
 about:
   name: Anand Kore
   title: DevOps Engineer
-  tagline: Bridging "works on my machine" to "works everywhere."
+  tagline: Bridging the gap between "works on my machine" and "works everywhere."
   summary: >
-    3+ years hands-on experience designing CI/CD pipelines, containerizing
-    microservices, and building observability stacks for production environments.
-    Migrated 25+ projects to GitLab CI/CD, cutting deployment time by 60%.
-    Proficient in Docker, Kubernetes, Terraform, and AWS with a strong
-    foundation in infrastructure automation, DevSecOps, and centralized monitoring.
-  currently_learning: Azure, Advanced Terraform, CKA Prep
+    DevOps Engineer who cut deployment time by 60% by migrating 25+ projects
+    to GitLab CI/CD at C-DAC, built an observability stack serving 15+ production
+    services (reducing MTTD from hours to minutes), and slashed provisioning time
+    from 4+ hours to under 30 minutes with automated Bash scripting.
+    3+ years designing CI/CD pipelines, containerizing microservices, and building
+    production-grade monitoring across AWS, Docker, Kubernetes, and Terraform.
+    Passionate about DevSecOps, GitOps workflows, and infrastructure automation.
+  currently_learning: Advanced Terraform
   resume_url: Anand_Kore_Resume.pdf
   links:
     - label: anandkore1@gmail.com
@@ -48,6 +48,8 @@ skills:
     items: SonarQube, Snyk, Snort IDS, VAPT Remediation, Keycloak IAM
   - category: OS & Version Control
     items: Linux (RHEL, Debian, Ubuntu), Git, GitLab SCM, Nginx
+  - category: Practices
+    items: Incident Response, On-call Operations, Infrastructure Automation
 
 experience:
   - role: Project Engineer - DevOps
@@ -60,10 +62,10 @@ experience:
       - Containerized 10+ microservices using Docker and Docker Swarm, improving deployment consistency and resource utilization by 40%.
       - Architected a centralized logging & monitoring stack (Prometheus, Loki, Grafana) serving 15+ Spring Boot services, reducing MTTD from hours to minutes.
       - Engineered Jenkins pipelines automating build, test, and release workflows, cutting manual release overhead by 70%.
-      - Developed a Bash provisioning script automating ePariksha deployment - Java, Tomcat, PostgreSQL, backup/restore, cross-platform (RHEL & Debian) - reducing provisioning from 4+ hours to under 30 minutes.
+      - Automated ePariksha provisioning (Java, Tomcat, PostgreSQL, backup/restore, RHEL & Debian) with a Bash script, reducing setup time from 4+ hours to under 30 minutes.
       - Designed production architecture for ACTS Website & PMS portal, achieving near-zero downtime during migration serving 5,000+ concurrent users.
-      - Deployed and maintained Payment Administration Service on-premise (Java, PostgreSQL, Node.js, Keycloak IAM, Nginx), remediating internal & external VAPT findings.
-      - Standardized Git branching strategies across 5+ dev teams, reducing merge conflicts by 50%.
+      - Deployed and maintained paySETU a Payment Administration Service on-premise (Java, PostgreSQL, Node.js, Keycloak IAM, Nginx), remediating internal & external VAPT findings.
+      - Standardized Git branching strategies across dev teams, reducing merge conflicts by 50%.
 
   - role: CSA & SME
     company: Amazon
@@ -80,12 +82,12 @@ projects:
     tags: [AWS, Kubernetes, Snort, Splunk]
 
   - name: Couch-Control
-    description: Self-hosted media remote - control playback and volume on Windows from your phone's browser. FastAPI backend with WebSocket real-time updates.
+    description: Self-hosted media remote to control playback and volume on Windows from your phone's browser. FastAPI backend with WebSocket real-time updates.
     url: https://github.com/TheOneOh1/Couch-Control
     tags: [Python, FastAPI, WebSocket]
 
   - name: Blackbox-Lite
-    description: Lightweight Bash script to monitor websites and VM hosts, exporting Prometheus-compatible metrics via Node Exporter.
+    description: Lightweight Bash monitoring agent for websites and VM hosts, exports Prometheus-compatible metrics via Node Exporter. Inspired by a real infrastructure crisis.
     url: https://github.com/TheOneOh1/blackbox-lite
     tags: [Bash, Prometheus, Node Exporter]
 
@@ -95,14 +97,14 @@ projects:
     tags: [Python, Nmap, Nikto, Nuclei]
 
   - name: Sentinel
-    description: Synthetic website monitoring using Bash - checks content availability and sends email alerts via SMTP when checks fail.
+    description: Synthetic website monitoring using Bash; checks content availability and sends email alerts via SMTP when checks fail.
     url: https://github.com/TheOneOh1/Sentinel
-    tags: [Bash, SMTP, cURL]
+    tags: [Bash, SMTP, cURL, Monitoring]
 
   - name: Darkly-Scanner
     description: Mass port scanning tool for penetration testers and bug bounty hunters. Scan a specific port across multiple domains at once.
     url: https://github.com/TheOneOh1/Darkly-Scanner
-    tags: [Shell, Networking]
+    tags: [Bash, Networking, Penetration Testing]
 
 education:
   - degree: Post Graduate Diploma in IT Infrastructure, Systems & Security
@@ -112,6 +114,10 @@ education:
   - degree: Bachelor of Engineering in Information Technology
     institution: PVPIT, Sangli - Shivaji University
     year: "2018"
+
+# ============================================
+# BLOG SECTION
+# ============================================
 
 blogs:
   - title: "Blackbox-Lite: From a basic Bash Script to a Monitoring Tool"
