@@ -110,8 +110,8 @@
   // ===========================================
   // RENDERERS
   // ===========================================
-  function renderAbout(data) {
-    var el = document.getElementById('about');
+  function renderHero(data) {
+    var el = document.getElementById('hero');
     if (!el || !data) return;
 
     var links = (data.links || []).map(function (l) {
@@ -155,121 +155,124 @@
       '</div>';
   }
 
-  function renderSkills(data) {
-    var el = document.getElementById('skills');
+  function renderAboutMe(data) {
+    var el = document.getElementById('about');
     if (!el || !data) return;
 
-    var cards = data.map(function (s) {
-      return '<div class="skill-card fade-in">' +
-        '<h3 class="skill-card-title">' + esc(s.category) + '</h3>' +
-        '<p class="skill-card-items">' + esc(s.items) + '</p>' +
+    var skillsHtml = '<div class="about-me-skills">';
+    if (data.skills_icons) {
+      data.skills_icons.forEach(function(skill) {
+        var styleAttr = skill.color ? ' style="--glow-color: ' + esc(skill.color) + ';"' : '';
+        skillsHtml += '<div class="skill-icon-wrapper" aria-label="' + esc(skill.name) + '" title="' + esc(skill.name) + '"' + styleAttr + '>' +
+          '<img src="' + esc(skill.icon) + '" alt="' + esc(skill.name) + '" class="skill-icon-img" />' +
+          '<div class="skill-tooltip">' + esc(skill.name) + '</div>' +
         '</div>';
-    }).join('');
+      });
+    }
+    skillsHtml += '</div>';
 
-    el.innerHTML =
-      '<h2 class="section-title">' + 'Skills' + '</h2>' +
-      '<div class="skills-grid">' + cards + '</div>';
+    el.innerHTML = 
+      '<div class="about-me-container">' +
+        '<div class="about-me-header">' +
+          '<h2 class="section-title">About</h2>' +
+          '<h3 class="about-me-subtitle">Me</h3>' +
+        '</div>' +
+        '<div class="about-me-split">' +
+          '<div class="about-me-left fade-in visible">' +
+            '<img src="' + esc(data.image) + '" alt="' + esc(data.name) + '" class="about-me-profile-img" />' +
+          '</div>' +
+          '<div class="about-me-right fade-in visible">' +
+            '<h2 class="about-me-name">' + esc(data.name) + '</h2>' +
+            '<p class="about-me-intro">' + data.intro.replace(/\n\n/g, '</p><p class="about-me-intro">') + '</p>' +
+            skillsHtml +
+          '</div>' +
+        '</div>' +
+      '</div>';
   }
 
   function renderExperience(data) {
     var el = document.getElementById('experience');
     if (!el || !data) return;
 
-    function buildContent(showAll) {
-      var items = data.map(function (job, index) {
-        var isHidden = !showAll && index >= 2;
-        var bullets = (job.bullets || []).map(function (b) {
-          return '<li>' + esc(b) + '</li>';
-        }).join('');
-        
-        var tags = (job.technologies || []).map(function (t) {
-          return '<span class="exp-tag">' + esc(t) + '</span>';
-        }).join('');
-
-        return '<div class="exp-card fade-in visible ' + (isHidden ? 'exp-item-hidden' : '') + '">' +
-          '<div class="exp-card-header">' +
-            '<div>' +
-              '<h3 class="exp-role">' + esc(job.role) + '</h3>' +
-              '<p class="exp-company">' + esc(job.company) + '</p>' +
-            '</div>' +
-            '<div class="exp-meta-group">' +
-              '<span class="exp-date">' + esc(job.date) + '</span>' +
-              '<span class="exp-location">' + esc(job.location) + '</span>' +
-            '</div>' +
-          '</div>' +
-          (tags ? '<div class="exp-tags-wrapper"><span class="exp-tags-label">Technologies:</span>' + tags + '</div>' : '') +
-          '<ul class="exp-bullets">' + bullets + '</ul>' +
-          '</div>';
+    var items = data.map(function (job, index) {
+      var tags = (job.technologies || []).map(function (t) {
+        return '<span class="exp-focus-tag">' + esc(t) + '</span>';
       }).join('');
 
-      var remaining = data.length - 2;
-      var showMoreBtn = (remaining > 0 && !showAll) 
-        ? '<div class="exp-show-more"><button id="btn-exp-more" class="btn-editorial">Show ' + remaining + ' more experience' + (remaining > 1 ? 's' : '') + '</button></div>' 
-        : '';
+      return '<div class="exp-focus-item" data-index="' + index + '">' +
+          '<div class="exp-focus-content">' +
+            '<h3 class="exp-focus-role">' + esc(job.role) + '</h3>' +
+            '<p class="exp-focus-company">' + esc(job.company) + '</p>' +
+            '<p class="exp-focus-desc">' + esc(job.description || '') + '</p>' +
+            (tags ? '<div class="exp-focus-tags">' + tags + '</div>' : '') +
+            '<span class="exp-focus-date">' + esc(job.date) + '</span>' +
+            '<div class="exp-focus-accent"></div>' +
+          '</div>' +
+        '</div>';
+    }).join('');
 
-      el.innerHTML =
-        '<div class="exp-section-header">' +
-          '<h2 class="section-title">Experience</h2>' +
-        '</div>' +
-        '<div class="exp-list">' + items + '</div>' + showMoreBtn;
+    el.innerHTML =
+      '<div class="exp-section-header">' +
+        '<h2 class="section-title">Experience</h2>' +
+      '</div>' +
+      '<div class="exp-focus-container">' + items + '</div>';
 
-      var btn = document.getElementById('btn-exp-more');
-      if (btn) {
-        btn.onclick = function() {
-          buildContent(true);
-        };
-      }
+    // Intersection Observer for Focus Flow
+    if ('IntersectionObserver' in window) {
+      var observerOptions = {
+        root: null,
+        rootMargin: '-20% 0% -20% 0%', // Trigger when item is in the central 60% of viewport
+        threshold: 0.5
+      };
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, observerOptions);
+
+      var focusItems = el.querySelectorAll('.exp-focus-item');
+      focusItems.forEach(function(item) {
+        observer.observe(item);
+      });
     }
-
-    buildContent(false);
   }
 
   function renderProjects(data) {
     var el = document.getElementById('projects');
     if (!el || !data) return;
 
-    function buildContent(showAll) {
-      // For projects, we'll actually use the slice method + toggle button 
-      // instead of hiding with CSS classes to ensure clean grid rendering.
-      var displayData = showAll ? data : data.slice(0, 2);
-
-      var cards = displayData.map(function (p) {
-        var tags = (p.tags || []).map(function (t) {
-          return '<span class="project-tag">' + esc(t) + '</span>';
-        }).join('');
-
-        return '<div class="project-card fade-in visible">' +
-          '<div class="project-card-header">' +
-          '<h3 class="project-card-name">' + esc(p.name) + '</h3>' +
-          '<a href="' + esc(p.url) + '" target="_blank" rel="noopener" class="project-card-link" aria-label="View on GitHub">' + ICONS.external + '</a>' +
-          '</div>' +
-          '<p class="project-card-desc">' + esc(p.description) + '</p>' +
-          '<div class="project-card-tags">' + tags + '</div>' +
-          '</div>';
+    var cards = data.map(function (p) {
+      var tags = (p.tags || []).map(function (t) {
+        return '<span class="project-tag-pill">' + esc(t) + '</span>';
       }).join('');
 
-      var remaining = data.length - 2;
-      var showMoreBtn = (remaining > 0 && !showAll) 
-        ? '<div class="exp-show-more"><button id="btn-projects-more" class="btn-editorial">Show ' + remaining + ' more project' + (remaining > 1 ? 's' : '') + '</button></div>' 
-        : '';
+      var imageSrc = p.image || '/favicon.png'; // Fallback if no image
 
-      el.innerHTML =
-        '<div class="exp-section-header">' +
-          '<h2 class="section-title">Projects</h2>' +
+      return '<div class="project-premium-card fade-in visible">' +
+        '<div class="project-card-image-wrapper">' +
+          '<img src="' + esc(imageSrc) + '" alt="' + esc(p.name) + '" class="project-card-image" />' +
+          '<div class="project-card-overlay">' +
+            '<a href="' + esc(p.url) + '" target="_blank" rel="noopener" class="project-view-btn">View Project</a>' +
+          '</div>' +
         '</div>' +
-        '<div class="projects-grid">' + cards + '</div>' + showMoreBtn;
+        '<div class="project-card-content">' +
+          '<h3 class="project-card-title">' + esc(p.name) + '</h3>' +
+          '<p class="project-card-desc">' + esc(p.description) + '</p>' +
+          '<div class="project-card-tags">' + tags + '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
 
-      var btn = document.getElementById('btn-projects-more');
-      if (btn) {
-        btn.onclick = function() {
-          buildContent(true);
-          // Scroll slightly to the new content
-          window.scrollBy({ top: 400, behavior: 'smooth' });
-        };
-      }
-    }
-
-    buildContent(false);
+    el.innerHTML =
+      '<div class="exp-section-header">' +
+        '<h2 class="section-title">Projects</h2>' +
+      '</div>' +
+      '<div class="projects-premium-grid">' + cards + '</div>';
   }
 
   function renderAchievements(data) {
@@ -307,17 +310,32 @@
     var el = document.getElementById('education');
     if (!el || !data) return;
 
+    var eduIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="edu-icon-svg"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>';
+
     var items = data.map(function (e) {
-      return '<div class="edu-item fade-in">' +
-        '<span class="edu-degree">' + esc(e.degree) + '</span>' +
-        '<span class="edu-year">' + esc(e.year) + '</span>' +
-        '<p class="edu-detail">' + esc(e.institution) + '</p>' +
-        '</div>';
+      var iconHtml = e.icon 
+        ? '<img src="' + e.icon + '" alt="' + esc(e.institution) + '" class="edu-icon-img" />'
+        : eduIcon;
+
+      return '<div class="edu-premium-card fade-in visible">' +
+          '<div class="edu-card-left">' +
+            '<div class="edu-card-icon">' + iconHtml + '</div>' +
+            '<div class="edu-card-info">' +
+              '<h3 class="edu-degree">' + esc(e.degree) + '</h3>' +
+              '<p class="edu-institution">' + esc(e.institution) + '</p>' +
+            '</div>' +
+          '</div>' +
+          '<div class="edu-card-right">' +
+            '<span class="edu-year">' + esc(e.year) + '</span>' +
+          '</div>' +
+      '</div>';
     }).join('');
 
     el.innerHTML =
-      '<h2 class="section-title">' + 'Education' + '</h2>' +
-      '<div class="edu-list">' + items + '</div>';
+      '<div class="exp-section-header">' +
+        '<h2 class="section-title">Education</h2>' +
+      '</div>' +
+      '<div class="edu-premium-list">' + items + '</div>';
   }
 
   function renderFooter(links) {
@@ -568,15 +586,15 @@
         renderBlog(data.blogs);
         renderFooter(data.about ? data.about.links : []);
       } else {
-        // Main page: render all sections
-        renderAbout(data.about);
-        renderSkills(data.skills);
+        // Main page: render all sections in specific order
+        renderHero(data.about);
         renderExperience(data.experience);
-        renderAchievements(data.achievements);
         renderEducation(data.education);
-        renderGitHubStats(data.about.github_username);
-        renderQuote();
         renderProjects(data.projects);
+        renderAboutMe(data.about_me);
+        renderGitHubStats(data.about.github_username);
+        renderAchievements(data.achievements);
+        renderQuote();
         renderFooter(data.about ? data.about.links : []);
 
         // Update page title from content
