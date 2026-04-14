@@ -122,7 +122,7 @@ experience:
 
   - role: Coordinator
     company: IEM SSO, Diversion, Commiceverse
-    date: "2023 - Present"
+    date: "2024 - 2026"
     location: "Kolkata, India"
     technologies:
       - Leadership
@@ -139,38 +139,64 @@ experience:
 # ============================================
 
 projects:
+  - name: Drone Integrity Protocol (Zero-Knowledge Based)
+    description: >
+      Designed a secure drone communication and validation protocol using
+      zero-knowledge principles to ensure data integrity, authenticity,
+      and tamper-proof coordination between multiple drones.
+    url: ADD_GITHUB_LINK
+    image: "/images/zk-drone.png"
+    tags: [Blockchain, Solidity, Security, Distributed Systems]
+
   - name: Autonomous Dual Drone System
     description: >
       Multi-agent drone system where one drone detects infected crops
       using computer vision and sends GPS coordinates to another drone,
       which autonomously navigates and performs actions like spraying.
-      Includes AI detection, communication pipeline, and system integration.
     url: ADD_GITHUB_LINK
+    image: "/images/autonomous-drone.png"
     tags: [Python, YOLO, DroneKit, MAVLink, Computer Vision]
+
+  - name: Self-Designed Modular Drone Frame (Patent Applied)
+    description: >
+      Designed a custom drone frame with snap-fit repair technology enabling
+      quick modular replacement of damaged parts without tools.
+      Patent filed.
+    url: ADD_GITHUB_LINK
+    image: "/images/drone-frame.png"
+    tags: [CAD, Fusion 360, Mechanical Design]
+
+  - name: Agricultural Drone System with Dew Node
+    description: >
+      Smart agricultural drone system integrated with ground-based dew nodes
+      for environmental sensing and precision farming.
+    url: ADD_GITHUB_LINK
+    image: "/images/agri-drone.png"
+    tags: [IoT, Drones, Sensors]
+
+  - name: MindPal – Stress Relief & Sleep System
+    description: >
+      VR-based mental wellness system focused on stress reduction
+      and sleep improvement using immersive environments.
+    url: ADD_GITHUB_LINK
+    image: "/images/mindpal.png"
+    tags: [VR, HealthTech]
 
   - name: AI Robot with Emotion Display
     description: >
-      Designed and built a robot with custom mechanical structure using CAD tools,
-      integrated with ESP32 and Arduino Nano. Uses ultrasonic sensing and displays
-      real-time emotional responses on an AMOLED display.
+      Robot with custom CAD structure using ESP32 and Arduino,
+      displaying emotional responses based on sensor input.
     url: ADD_GITHUB_LINK
-    tags: [ESP32, Arduino, CAD, Embedded Systems]
-
-  - name: Bluetooth Speaker with Metadata Display
-    description: >
-      Designed enclosure and internal layout using CAD tools, built a Bluetooth
-      audio system with OLED display showing real-time song metadata using ESP32
-      and DAC amplifier.
-    url: ADD_GITHUB_LINK
-    tags: [ESP32, Audio, CAD, I2C]
+    image: "/images/robot.png"
+    tags: [ESP32, Arduino, Embedded]
 
   - name: ROS 6DOF Robotic Arm
     description: >
-      Designed and simulated a 6DOF robotic arm including mechanical structure
-      and joint configuration, integrated with ROS2 for motion planning and control.
+      Designed and simulated a robotic arm integrated with ROS2
+      for motion planning and control.
     url: ADD_GITHUB_LINK
-    tags: [ROS2, Robotics, CAD, Simulation]
-
+    image: "/images/robot.png"
+    tags: [ROS2, Robotics, CAD]
 # ============================================
 # EDUCATION
 # ============================================
@@ -179,7 +205,17 @@ education:
   - degree: B.Tech in Computer Science & Engineering (AI)
     institution: Institute of Engineering and Management, Kolkata
     year: "2024 - 2028"
+    icon: "/images/iem-logo.png"
 
+  - degree: Higher Secondary (Class XI & XII)
+    institution: Hariyana Vidyamandir
+    year: "2022 - 2024"
+    icon: "/images/hvm-logo.png"
+
+  - degree: Primary & Secondary Education (Nursery - Class X)
+    institution: Sri Aurobindo Institute of Education
+    year: "2008 - 2022"
+    icon: "/images/aurobindo-logo.png"
 # ============================================
 # BLOGS
 # ============================================
@@ -203,7 +239,76 @@ achievements:
     title: "GeeksforGeeks Hackathon"
     position: "4th Prize"
     description: "Built Data Visualization tool ."
-  - year: "2026"
+  - year: "2023"
     title: "Axiora"
-    position: "1st Prize"
-    description: "Zero-knowledge based drone communication and verification system"
+    position: "1 st Place"
+    description: "Awarded for exceptional hackathon project implementation."
+
+# ============================================
+# ABOUT ME
+# ============================================
+
+about_me:
+  name: "Ahir Sarkar"
+  intro: >
+    I'm a B.Tech Computer Science student specializing in Artificial Intelligence. I love building real-world systems that combine software and hardware — from autonomous drones and robotics to embedded systems and intelligent applications.
+    Currently, I'm exploring AI/ML, ROS, and full-stack development while continuously creating projects that bridge intelligence with real-world engineering.
+
+  image: "/favicon.png"
+
+  skills_icons:
+    - name: "Python"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+      color: "#3776AB"
+
+    - name: "C"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+      color: "#A8B9CC"
+
+    - name: "ROS"
+      icon: "https://cdn.simpleicons.org/ros"
+      color: "#22314E"
+
+    - name: "Arduino"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg"
+      color: "#00979D"
+
+    - name: "ESP32"
+      icon: "https://cdn.simpleicons.org/espressif"
+      color: "#E7352C"
+
+    - name: "OpenCV"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg"
+      color: "#5C3EE8"
+
+    - name: "Drone Systems"
+      icon: "https://api.iconify.design/mdi:quadcopter.svg?color=%2300E5FF"
+      color: "#00E5FF"
+
+    - name: "Fusion 360"
+      icon: "https://api.iconify.design/simple-icons:autodesk.svg?color=%23F37321"
+      color: "#F37321"
+
+    - name: "SolidWorks"
+      icon: "https://api.iconify.design/simple-icons:dassaultsystemes.svg?color=%23E3242B"
+      color: "#E3242B"
+
+    - name: "HTML"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+      color: "#E34F26"
+
+    - name: "CSS"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+      color: "#1572B6"
+
+    - name: "JavaScript"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+      color: "#F7DF1E"
+
+    - name: "React"
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+      color: "#61DAFB"
+
+    - name: "Solidity"
+      icon: "https://cdn.simpleicons.org/solidity/A1A1AA"
+      color: "#A1A1AA"
