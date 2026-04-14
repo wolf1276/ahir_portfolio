@@ -1,92 +1,60 @@
-# =============================================================================
-# Portfolio CI/CD - Compile LaTeX Resume & Deploy via GitHub Pages
-# =============================================================================
-# Triggers on push to main. If resume source files changed, compiles the
-# .tex → .pdf using native TeX Live and commits the updated PDF back to repo.
-# GitHub Pages continues to auto-deploy from the main branch as before.
-# =============================================================================
-
-name: Build Resume & Deploy
+name: Build & Deploy Portfolio
 
 on:
   push:
-    branches: [main, ft-seo-friendly]
-
-# Prevent concurrent runs; cancel in-progress runs on new push
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
-  contents: write   # needed to push compiled PDF back to repo
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  compile-resume:
+  build-resume:
     runs-on: ubuntu-latest
-
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
-      - name: Checkout repository
+      - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      # ---------------------------------------------------------------
-      # Check if any resume source files (.tex, .cls) changed
-      # If not, skip compilation to save time
-      # ---------------------------------------------------------------
-      - name: Check for resume changes
-        id: changes
+      - name: Compile LaTeX Resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume/Ahir_Sarkar_Resume.tex
+          working_directory: resume/
+          compiler: latexmk
+          args: -pdf -interaction=nonstopmode
+
+      - name: Move PDF to Root
+        run: mv resume/Ahir_Sarkar_Resume.pdf ./Ahir_Sarkar_Resume.pdf
+
+      - name: Commit & Push PDF
         run: |
-          # On first run or if PDF doesn't exist yet, always compile
-          if [ ! -f "Anand_Kore_Resume.pdf" ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-            exit 0
-          fi
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add Ahir_Sarkar_Resume.pdf
+          git diff --staged --quiet || (git commit -m "chore: update compiled resume [skip ci]" && git push)
 
-          # Check if any .tex or .cls files changed in this push
-          CHANGED=$(git diff --name-only HEAD~1 HEAD -- 'resume/' 2>/dev/null || echo "resume/")
-          if [ -n "$CHANGED" ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-          fi
+  deploy-pages:
+    needs: build-resume
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      # ---------------------------------------------------------------
-      # Install TeX Live (only what's needed - fast & lightweight)
-      # ---------------------------------------------------------------
-      - name: Install TeX Live
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends \
-            texlive-latex-base \
-            texlive-latex-extra \
-            texlive-fonts-recommended \
-            latexmk
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-      # ---------------------------------------------------------------
-      # Compile LaTeX → PDF
-      # ---------------------------------------------------------------
-      - name: Compile LaTeX to PDF
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          cd resume
-          latexmk -pdf -interaction=nonstopmode -halt-on-error Anand_Kore_Resume.tex
-          echo "✅ Resume compiled successfully"
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
 
-      # ---------------------------------------------------------------
-      # Move compiled PDF to repo root & commit back
-      # ---------------------------------------------------------------
-      - name: Move PDF to root
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          mv resume/Anand_Kore_Resume.pdf ./Anand_Kore_Resume.pdf
-
-      - name: Commit and push updated PDF
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add Anand_Kore_Resume.pdf
-          # Only commit if there are actual changes
-          git diff --cached --quiet || git commit -m "chore: recompile resume PDF [skip ci]"
-          git pull --rebase origin ${{ github.ref_name }}
-          git push
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

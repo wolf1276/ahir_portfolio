@@ -1,156 +1,187 @@
 # ============================================
-# PORTFOLIO CONTENT - Edit this file to update the site
+# PORTFOLIO CONTENT - AHIR SARKAR
 # ============================================
 
 about:
-  name: Anand Kore
-  title: DevOps Engineer
-  tagline: Bridging the gap between "works on my machine" and "works everywhere."
+  name: Ahir Sarkar
+  title: AI x Robotics Engineer
+  github_username: wolf1276
+  image: profile.png
+  tagline: "Building intelligent systems that move, see, and decide."
+
   summary: >
-    DevOps Engineer who cut deployment time by 60% by migrating 25+ projects
-    to GitLab CI/CD at C-DAC, built an observability stack serving 15+ production
-    services (reducing MTTD from hours to minutes), and slashed provisioning time
-    from 4+ hours to under 30 minutes with automated Bash scripting.
-    3+ years designing CI/CD pipelines, containerizing microservices, and building
-    production-grade monitoring across AWS, Docker, Kubernetes, and Terraform.
-    Passionate about DevSecOps, GitOps workflows, and infrastructure automation.
-  currently_learning: Advanced Terraform
-  resume_url: Anand_Kore_Resume.pdf
+    Engineering student specializing in Artificial Intelligence and Robotics,
+    focused on building autonomous systems using embedded hardware,
+    computer vision, and mechanical design.
+
+    Experienced in designing and prototyping robotic systems from scratch,
+    combining CAD modeling, embedded electronics, and AI-based perception.
+
+    Currently expanding into Web Development, ROS2, and Blockchain
+    to build scalable, connected, and intelligent systems.
+
+  currently_learning: ROS2, Web Development, Blockchain, TensorFlow, YOLO
+
+  resume_url: Ahir_Sarkar_Resume.pdf
+
   links:
-    - label: anandkore1@gmail.com
-      url: mailto:anandkore1@gmail.com
+    - label: Email
+      url: mailto:ahirsarkar2022@gmail.com
       icon: email
+      icon_only: true
+
     - label: LinkedIn
-      url: https://www.linkedin.com/in/anandkore101/
+      url: https://www.linkedin.com/in/ahir-sarkar-290b17345/
       icon: linkedin
+      icon_only: true
+
     - label: GitHub
-      url: https://github.com/TheOneOh1
+      url: https://github.com/wolf1276
       icon: github
-    - label: Preview Resume
-      url: Anand_Kore_Resume.pdf
-      icon: preview
+      icon_only: true
+
+    - label: X
+      url: https://x.com/d2ahir
+      icon: twitter
+      icon_only: true
+
     - label: Resume
-      url: Anand_Kore_Resume.pdf
-      icon: download
+      url: Ahir_Sarkar_Resume.pdf
+      icon: preview
+
+# ============================================
+# SKILLS
+# ============================================
 
 skills:
-  - category: CI/CD & Automation
-    items: GitLab CI/CD, GitHub Actions, Jenkins, Bitbucket Pipelines
-  - category: Containers & Orchestration
-    items: Docker, Docker Swarm, Kubernetes, Docker Compose
-  - category: Infrastructure as Code
-    items: Terraform, Ansible, Bash, Python, PowerShell, YAML
-  - category: Cloud Platforms
-    items: AWS (EC2, VPC, Lambda, IAM, S3, CloudWatch)
-  - category: Observability & Monitoring
-    items: Prometheus, Grafana, Loki, Promtail, New Relic, Splunk
-  - category: Security & Code Quality
-    items: SonarQube, Snyk, Snort IDS, VAPT Remediation, Keycloak IAM
-  - category: OS & Version Control
-    items: Linux (RHEL, Debian, Ubuntu), Git, GitLab SCM, Nginx
-  - category: Practices
-    items: Incident Response, On-call Operations, Infrastructure Automation
+  - category: Programming
+    items: Python, C, C++, Embedded C, JavaScript (Basics)
+
+  - category: AI & ML
+    items: TensorFlow, YOLO, OpenCV, Computer Vision
+
+  - category: Robotics & Embedded
+    items: Arduino, ESP32, Sensors, Actuators, PWM, I2C, SPI, Motor Control
+
+  - category: CAD & Mechanical Design
+    items: SolidWorks, Fusion 360, 3D Modeling, Assembly Design, Mechanical Prototyping
+
+  - category: Web & Backend (Learning)
+    items: HTML, CSS, JavaScript, React (Basics), Node.js (Basics)
+
+  - category: Blockchain (Learning)
+    items: Solidity (Basics), Smart Contracts, Web3 Concepts
+
+  - category: Systems & Tools
+    items: Linux, Git, Bash, Docker (Basics)
+
+  - category: Electronics
+    items: Circuit Design, PCB Design (KiCad), Power Systems
+
+  - category: Concepts
+    items: Control Systems, Autonomous Navigation, Real-time Systems
+# ============================================
+# EXPERIENCE
+# ============================================
 
 experience:
-  - role: Project Engineer - DevOps
-    company: "C-DAC: Centre for Development of Advanced Computing"
-    location: Pune
-    date: Nov 2022 – Present
+  - role: Junior Researcher
+    company: Centre of Excellence for Advanced Communication & Intelligent Computing (ACECAC)
+    date: "2025 - Present"
+    location: "Kolkata, India"
+    technologies:
+      - AI
+      - Machine Learning
+      - Intelligent Systems
+      - Communication Systems
+      - Robotics
+      - CAD
+      - 3D Printing
     bullets:
-      - Migrated 25+ projects from manual deployment to GitLab CI/CD pipelines, reducing deployment time by 60% and eliminating manual release errors across multiple teams.
-      - Integrated SonarQube and Snyk into CI/CD workflows, enforcing automated code quality gates and reducing security vulnerabilities by 30% before production.
-      - Containerized 10+ microservices using Docker and Docker Swarm, improving deployment consistency and resource utilization by 40%.
-      - Architected a centralized logging & monitoring stack (Prometheus, Loki, Grafana) serving 15+ Spring Boot services, reducing MTTD from hours to minutes.
-      - Engineered Jenkins pipelines automating build, test, and release workflows, cutting manual release overhead by 70%.
-      - Automated ePariksha provisioning (Java, Tomcat, PostgreSQL, backup/restore, RHEL & Debian) with a Bash script, reducing setup time from 4+ hours to under 30 minutes.
-      - Designed production architecture for ACTS Website & PMS portal, achieving near-zero downtime during migration serving 5,000+ concurrent users.
-      - Deployed and maintained paySETU a Payment Administration Service on-premise (Java, PostgreSQL, Node.js, Keycloak IAM, Nginx), remediating internal & external VAPT findings.
-      - Standardized Git branching strategies across dev teams, reducing merge conflicts by 50%.
+      - Conducting research in AI-driven intelligent computing and advanced communication systems.
+      - Designing and building drones and robotic systems for real-world applications.
+      - Developing custom 3D-printed frames and mechanical components for robotics projects.
+      - Integrating hardware and software systems for intelligent automation solutions.
+      - Focused on problem-solving and implementation of AI-based systems through experimental research.
 
-  - role: CSA & SME
-    company: Amazon
-    location: Pune
-    date: Jul 2018 - Mar 2021
+  - role: Junior Researcher
+    company: IEM IPR Cell
+    date: "January 2024 - January 2025"
+    location: "Kolkata, India"
+    technologies:
+      - IPR
+      - Patent Analysis
+      - Documentation
+      - Research
+      - Product Development
     bullets:
-      - Leveraged strong technical communication skills to translate complex issues into actionable solutions for end-users.
-      - Led peer training initiatives, improving overall team performance metrics and decreasing new hire onboarding time by 25%.
+      - Conducted research on Intellectual Property Rights (IPR) and innovation systems.
+      - Performed patent analysis and contributed to technical documentation.
+      - Developed a stress-relief and anxiety management device (MindPal), focusing on user-centric design and innovation.
+      - Gained practical understanding of patent structures and product-oriented research methodologies.
+
+  - role: Coordinator
+    company: IEM SSO, Diversion, Commiceverse
+    date: "2023 - Present"
+    location: "Kolkata, India"
+    technologies:
+      - Leadership
+      - Event Management
+      - Communication
+      - Team Building
+    bullets:
+      - Managed and coordinated multiple large-scale events, leading cross-functional teams.
+      - Handled team collaboration and logistics to ensure smooth execution.
+      - Strengthened leadership and organizational skills through active coordination roles.
+
+# ============================================
+# PROJECTS
+# ============================================
 
 projects:
-  - name: K8s-Snorty-Splunk
-    description: Kubernetes cluster IDS on AWS with Snort intrusion detection and Splunk dashboards for real-time threat monitoring and alerting.
-    url: https://github.com/TheOneOh1/K8s-Snorty-Splunk
-    tags: [AWS, Kubernetes, Snort, Splunk]
+  - name: Autonomous Dual Drone System
+    description: >
+      Multi-agent drone system where one drone detects infected crops
+      using computer vision and sends GPS coordinates to another drone,
+      which autonomously navigates and performs actions like spraying.
+      Includes AI detection, communication pipeline, and system integration.
+    url: ADD_GITHUB_LINK
+    tags: [Python, YOLO, DroneKit, MAVLink, Computer Vision]
 
-  - name: Couch-Control
-    description: Self-hosted media remote to control playback and volume on Windows from your phone's browser. FastAPI backend with WebSocket real-time updates.
-    url: https://github.com/TheOneOh1/Couch-Control
-    tags: [Python, FastAPI, WebSocket]
+  - name: AI Robot with Emotion Display
+    description: >
+      Designed and built a robot with custom mechanical structure using CAD tools,
+      integrated with ESP32 and Arduino Nano. Uses ultrasonic sensing and displays
+      real-time emotional responses on an AMOLED display.
+    url: ADD_GITHUB_LINK
+    tags: [ESP32, Arduino, CAD, Embedded Systems]
 
-  - name: Blackbox-Lite
-    description: Lightweight Bash monitoring agent for websites and VM hosts, exports Prometheus-compatible metrics via Node Exporter. Inspired by a real infrastructure crisis.
-    url: https://github.com/TheOneOh1/blackbox-lite
-    tags: [Bash, Prometheus, Node Exporter]
+  - name: Bluetooth Speaker with Metadata Display
+    description: >
+      Designed enclosure and internal layout using CAD tools, built a Bluetooth
+      audio system with OLED display showing real-time song metadata using ESP32
+      and DAC amplifier.
+    url: ADD_GITHUB_LINK
+    tags: [ESP32, Audio, CAD, I2C]
 
-  - name: Argus-Scan
-    description: Python-based security automation tool that orchestrates Nmap, Nikto, and Nuclei scans with consolidated reporting.
-    url: https://github.com/TheOneOh1/Argus-Scan
-    tags: [Python, Nmap, Nikto, Nuclei]
+  - name: ROS 6DOF Robotic Arm
+    description: >
+      Designed and simulated a 6DOF robotic arm including mechanical structure
+      and joint configuration, integrated with ROS2 for motion planning and control.
+    url: ADD_GITHUB_LINK
+    tags: [ROS2, Robotics, CAD, Simulation]
 
-  - name: Sentinel
-    description: Synthetic website monitoring using Bash; checks content availability and sends email alerts via SMTP when checks fail.
-    url: https://github.com/TheOneOh1/Sentinel
-    tags: [Bash, SMTP, cURL, Monitoring]
-
-  - name: Darkly-Scanner
-    description: Mass port scanning tool for penetration testers and bug bounty hunters. Scan a specific port across multiple domains at once.
-    url: https://github.com/TheOneOh1/Darkly-Scanner
-    tags: [Bash, Networking, Penetration Testing]
+# ============================================
+# EDUCATION
+# ============================================
 
 education:
-  - degree: Post Graduate Diploma in IT Infrastructure, Systems & Security
-    institution: C-DAC - Centre for Development of Advanced Computing, Pune
-    year: "2022"
-
-  - degree: Bachelor of Engineering in Information Technology
-    institution: PVPIT, Sangli - Shivaji University
-    year: "2018"
+  - degree: B.Tech in Computer Science & Engineering (AI)
+    institution: Institute of Engineering and Management, Kolkata
+    year: "2024 - 2028"
 
 # ============================================
-# BLOG SECTION
+# BLOGS
 # ============================================
 
-blogs:
-  - title: "Blackbox-Lite: From a basic Bash Script to a Monitoring Tool"
-    summary: "The origin story of building an automated, all-seeing monitoring solution - evolving from reactive troubleshooting to proactive infrastructure observability with Prometheus integration."
-    url: https://medium.com/@anandkore1/how-i-stopped-manually-pinging-vms-during-an-infrastructure-crisis-b1f1b2d8890b
-    platform: medium
-    date: "2026-04-04"
-    tags: [Bash, Prometheus, Monitoring, Observability, Linux]
-
-  - title: "How to Gracefully Handle Downtime with Nginx"
-    summary: "Don't show an ugly 503 default error page to your users instead use this simple Nginx trick to handle a proper Downtime message."
-    url: https://medium.com/@anandkore1/how-to-gracefully-handle-downtime-with-nginx-and-a-503-status-code-5d16326e1add
-    platform: medium
-    date: "2026-03-24"
-    tags: [Nginx, Downtime, 503, Webserver]
-
-  - title: "Couch Control: I Was Too Lazy to Get Off the Couch, So I Built This"
-    summary: "Are you fed up of all those remote app asking for permissions to control your media player?, try this self-hosted remote control for your media player."
-    url: https://couch-control.hashnode.dev/i-was-too-lazy-to-get-off-the-couch-so-i-built-this
-    platform: hashnode
-    date: "2026-02-02"
-    tags: [Python, FastAPI, WebSocket, Self-hosted]
-
-  - title: "How we Stopped 30-Minute Deployments and Saved Our Team 95 Hours a Month"
-    summary: "A deep-dive into migrating a legacy React frontend pipeline from Node 16 + Webpack to Node 24 + Vite, replacing SSH deployments with artifact-based releases and PM2 process management."
-    url: https://medium.com/@anandkore1/how-we-stopped-30-minute-deployments-and-saved-our-team-95-hours-a-month-0d0dc1bcce98
-    platform: medium
-    date: "2026-04-08"
-    tags: [CI/CD, GitLab, Vite, React]
-
-  - title: "My Portfolio Site Has a CI/CD Pipeline. Here’s Why."
-    summary: "I wanted my portfolio to be more than just a static page - I wanted it to be a living testament to my DevOps skills. So I built a CI/CD pipeline to automate the entire deployment process."
-    url: https://medium.com/@anandkore1/my-portfolio-site-has-a-ci-cd-pipeline-heres-why-63ac5cbaaddb
-    platform: medium
-    date: "2026-04-14"
-    tags: [CI/CD, GitHub Actions, LaTeX, Portfolio]
+blogs: []

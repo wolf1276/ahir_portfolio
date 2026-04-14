@@ -121,7 +121,18 @@ EOF
 
     docker build -t ${IMAGE_NAME} -f Dockerfile.tmp .
     rm Dockerfile.tmp
+    
+    log_success "Docker image built. Starting container..."
+    docker run -it --rm -p ${PORT}:80 ${IMAGE_NAME}
+}
 
+# --- Execution Entry Point ---
+case "$1" in
+    start)
+        cmd_start
+        ;;
+    docker)
+        cmd_docker
         ;;
     validate)
         cmd_validate
@@ -130,3 +141,4 @@ EOF
         show_help
         ;;
 esac
+

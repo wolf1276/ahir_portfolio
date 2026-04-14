@@ -16,7 +16,8 @@
     external: '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>',
     medium: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42s-3.39-2.88-3.39-6.42 1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zm2.94 0c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75 1.19 2.58 1.19 5.75z"/></svg>',
     hashnode: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.65 10.4a3.27 3.27 0 000 4.62l6.32 6.33a3.27 3.27 0 004.62 0l6.33-6.33a3.27 3.27 0 000-4.62L13.6 4.07a3.27 3.27 0 00-4.63 0L2.65 10.4zm8.56-1.47a3.1 3.1 0 110 6.19 3.1 3.1 0 010-6.19z"/></svg>',
-    dev: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6v4.36h.58c.37 0 .67-.08.84-.23.2-.17.31-.48.31-.95v-2c0-.5-.11-.81-.31-.95zm13.37-7.13H3.2A2.13 2.13 0 001 5.04v13.92c0 1.17.96 2.12 2.21 2.12h17.58c1.25 0 2.21-.95 2.21-2.12V5.04c0-1.17-.96-2.12-2.21-2.12zM8.89 14.32c-.38.42-.93.63-1.62.63H5.12V9.05h2.17c.69 0 1.23.2 1.6.63.34.39.52.94.52 1.65v1.34c0 .71-.18 1.26-.52 1.65zm4.46-.36c0 .7-.28 1.3-.84 1.82-.25.23-.59.35-1.02.35-.42 0-.77-.12-1.03-.36l-.07-.08V16h-1.41V9.05h1.41v.61a1.57 1.57 0 011.1-.44c.43 0 .77.12 1.02.36.56.51.84 1.12.84 1.82v2.56zm5.18-1.15h-1.67v1.67h-.88v-1.67h-1.66v-.88h1.66v-1.67h.88v1.67h1.67v.88z"/></svg>'
+    dev: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6v4.36h.58c.37 0 .67-.08.84-.23.2-.17.31-.48.31-.95v-2c0-.5-.11-.81-.31-.95zm13.37-7.13H3.2A2.13 2.13 0 001 5.04v13.92c0 1.17.96 2.12 2.21 2.12h17.58c1.25 0 2.21-.95 2.21-2.12V5.04c0-1.17-.96-2.12-2.21-2.12zM8.89 14.32c-.38.42-.93.63-1.62.63H5.12V9.05h2.17c.69 0 1.23.2 1.6.63.34.39.52.94.52 1.65v1.34c0 .71-.18 1.26-.52 1.65zm4.46-.36c0 .7-.28 1.3-.84 1.82-.25.23-.59.35-1.02.35-.42 0-.77-.12-1.03-.36l-.07-.08V16h-1.41V9.05h1.41v.61a1.57 1.57 0 011.1-.44c.43 0 .77.12 1.02.36.56.51.84 1.12.84 1.82v2.56zm5.18-1.15h-1.67v1.67h-.88v-1.67h-1.66v-.88h1.66v-1.67h.88v1.67h1.67v.88z"/></svg>',
+    twitter: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.933zm-1.292 19.49h2.039L6.486 3.24H4.298l13.311 17.403z"/></svg>'
   };
 
   // --- Helpers ---
@@ -115,12 +116,19 @@
 
     var links = (data.links || []).map(function (l) {
       var icon = ICONS[l.icon] || '';
+      var hasLabel = !l.icon_only;
+      var className = l.icon_only ? 'about-link-icon' : 'about-link-btn';
+      var labelHtml = hasLabel ? '<span>' + esc(l.label) + '</span>' : '';
+      
+      var attr = ' class="' + className + '"';
+      if (l.icon_only) attr += ' aria-label="' + esc(l.label) + '" title="' + esc(l.label) + '"';
+
       if (l.icon === 'preview') {
-        return '<button type="button" class="resume-preview-btn" data-url="' + esc(l.url) + '">' + icon + ' ' + esc(l.label) + '</button>';
+        return '<button type="button" ' + attr + ' data-url="' + esc(l.url) + '">' + icon + labelHtml + '</button>';
       }
       var target = isExternal(l.url) ? ' target="_blank" rel="noopener"' : '';
       var dl = l.icon === 'download' ? ' download' : '';
-      return '<a href="' + esc(l.url) + '"' + target + dl + '>' + icon + ' ' + esc(l.label) + '</a>';
+      return '<a href="' + esc(l.url) + '"' + attr + target + dl + '>' + icon + labelHtml + '</a>';
     }).join('');
 
     var taglineHtml = data.tagline
@@ -132,12 +140,19 @@
       : '';
 
     el.innerHTML =
-      '<h1 class="about-name">' + esc(data.name) + '</h1>' +
-      '<p class="about-title">' + esc(data.title) + '</p>' +
-      taglineHtml +
-      '<p class="about-desc">' + esc(data.summary) + '</p>' +
-      learningHtml +
-      '<div class="about-links">' + links + '</div>';
+      '<div class="about-flex">' +
+        '<div class="about-text">' +
+          '<h1 class="about-name animate-item">' + esc(data.name) + '</h1>' +
+          '<p class="about-title animate-item">' + esc(data.title) + '</p>' +
+          (taglineHtml ? taglineHtml.replace('class="', 'class="animate-item ') : '') +
+          '<p class="about-desc animate-item">' + esc(data.summary) + '</p>' +
+          (learningHtml ? learningHtml.replace('class="', 'class="animate-item ') : '') +
+          '<div class="about-links animate-item">' + links + '</div>' +
+        '</div>' +
+        '<div class="about-image animate-item">' +
+          '<img src="' + (data.image || 'favicon.png') + '" alt="' + esc(data.name) + '">' +
+        '</div>' +
+      '</div>';
   }
 
   function renderSkills(data) {
@@ -160,48 +175,101 @@
     var el = document.getElementById('experience');
     if (!el || !data) return;
 
-    var items = data.map(function (job) {
-      var bullets = (job.bullets || []).map(function (b) {
-        return '<li>' + esc(b) + '</li>';
+    function buildContent(showAll) {
+      var items = data.map(function (job, index) {
+        var isHidden = !showAll && index >= 2;
+        var bullets = (job.bullets || []).map(function (b) {
+          return '<li>' + esc(b) + '</li>';
+        }).join('');
+        
+        var tags = (job.technologies || []).map(function (t) {
+          return '<span class="exp-tag">' + esc(t) + '</span>';
+        }).join('');
+
+        return '<div class="exp-card fade-in visible ' + (isHidden ? 'exp-item-hidden' : '') + '">' +
+          '<div class="exp-card-header">' +
+            '<div>' +
+              '<h3 class="exp-role">' + esc(job.role) + '</h3>' +
+              '<p class="exp-company">' + esc(job.company) + '</p>' +
+            '</div>' +
+            '<div class="exp-meta-group">' +
+              '<span class="exp-date">' + esc(job.date) + '</span>' +
+              '<span class="exp-location">' + esc(job.location) + '</span>' +
+            '</div>' +
+          '</div>' +
+          (tags ? '<div class="exp-tags-wrapper"><span class="exp-tags-label">Technologies:</span>' + tags + '</div>' : '') +
+          '<ul class="exp-bullets">' + bullets + '</ul>' +
+          '</div>';
       }).join('');
 
-      return '<div class="exp-item fade-in">' +
-        '<div class="exp-header">' +
-        '<span class="exp-role">' + esc(job.role) + '</span>' +
-        '<span class="exp-date">' + esc(job.date) + '</span>' +
-        '</div>' +
-        '<p class="exp-company">' + esc(job.company) + ' · ' + esc(job.location) + '</p>' +
-        '<ul class="exp-bullets">' + bullets + '</ul>' +
-        '</div>';
-    }).join('');
+      var remaining = data.length - 2;
+      var showMoreBtn = (remaining > 0 && !showAll) 
+        ? '<div class="exp-show-more"><button id="btn-exp-more" class="btn-editorial">Show ' + remaining + ' more experience' + (remaining > 1 ? 's' : '') + '</button></div>' 
+        : '';
 
-    el.innerHTML =
-      '<h2 class="section-title">' + 'Experience' + '</h2>' +
-      '<div class="exp-list">' + items + '</div>';
+      el.innerHTML =
+        '<div class="exp-section-header">' +
+          '<h2 class="section-title">Experience</h2>' +
+        '</div>' +
+        '<div class="exp-list">' + items + '</div>' + showMoreBtn;
+
+      var btn = document.getElementById('btn-exp-more');
+      if (btn) {
+        btn.onclick = function() {
+          buildContent(true);
+        };
+      }
+    }
+
+    buildContent(false);
   }
 
   function renderProjects(data) {
     var el = document.getElementById('projects');
     if (!el || !data) return;
 
-    var cards = data.map(function (p) {
-      var tags = (p.tags || []).map(function (t) {
-        return '<span class="project-tag">' + esc(t) + '</span>';
+    function buildContent(showAll) {
+      // For projects, we'll actually use the slice method + toggle button 
+      // instead of hiding with CSS classes to ensure clean grid rendering.
+      var displayData = showAll ? data : data.slice(0, 2);
+
+      var cards = displayData.map(function (p) {
+        var tags = (p.tags || []).map(function (t) {
+          return '<span class="project-tag">' + esc(t) + '</span>';
+        }).join('');
+
+        return '<div class="project-card fade-in visible">' +
+          '<div class="project-card-header">' +
+          '<h3 class="project-card-name">' + esc(p.name) + '</h3>' +
+          '<a href="' + esc(p.url) + '" target="_blank" rel="noopener" class="project-card-link" aria-label="View on GitHub">' + ICONS.external + '</a>' +
+          '</div>' +
+          '<p class="project-card-desc">' + esc(p.description) + '</p>' +
+          '<div class="project-card-tags">' + tags + '</div>' +
+          '</div>';
       }).join('');
 
-      return '<div class="project-card fade-in">' +
-        '<div class="project-card-header">' +
-        '<h3 class="project-card-name">' + esc(p.name) + '</h3>' +
-        '<a href="' + esc(p.url) + '" target="_blank" rel="noopener" class="project-card-link" aria-label="View on GitHub">' + ICONS.external + '</a>' +
-        '</div>' +
-        '<p class="project-card-desc">' + esc(p.description) + '</p>' +
-        '<div class="project-card-tags">' + tags + '</div>' +
-        '</div>';
-    }).join('');
+      var remaining = data.length - 2;
+      var showMoreBtn = (remaining > 0 && !showAll) 
+        ? '<div class="exp-show-more"><button id="btn-projects-more" class="btn-editorial">Show ' + remaining + ' more project' + (remaining > 1 ? 's' : '') + '</button></div>' 
+        : '';
 
-    el.innerHTML =
-      '<h2 class="section-title">' + 'Projects' + '</h2>' +
-      '<div class="projects-grid">' + cards + '</div>';
+      el.innerHTML =
+        '<div class="exp-section-header">' +
+          '<h2 class="section-title">Projects</h2>' +
+        '</div>' +
+        '<div class="projects-grid">' + cards + '</div>' + showMoreBtn;
+
+      var btn = document.getElementById('btn-projects-more');
+      if (btn) {
+        btn.onclick = function() {
+          buildContent(true);
+          // Scroll slightly to the new content
+          window.scrollBy({ top: 400, behavior: 'smooth' });
+        };
+      }
+    }
+
+    buildContent(false);
   }
 
   function renderEducation(data) {
@@ -236,7 +304,7 @@
     el.innerHTML =
       '<div class="container"><div class="footer-inner">' +
       '<div class="footer-links">' + footerLinks + '</div>' +
-      '<span class="footer-copy">&copy; ' + new Date().getFullYear() + ' Anand Kore</span>' +
+      '<span class="footer-copy">&copy; ' + new Date().getFullYear() + ' Ahir Sarkar</span>' +
       '</div></div>';
   }
 
@@ -300,6 +368,156 @@
       '<div class="blog-list">' + entries + '</div>';
   }
 
+
+  // ===========================================
+  // GITHUB LIVE CHART RENDERER
+  // ===========================================
+  function renderGitHubStats(username) {
+    var el = document.getElementById('github-stats');
+    if (!el || !username) return;
+
+    // Initial structure matching the requested format
+    el.innerHTML = 
+      '<div class="container">' +
+        '<div class="gh-chart-wrapper">' +
+          '<div class="gh-chart-header">' +
+            '<h2 class="gh-chart-title">GitHub Activity</h2>' +
+            '<p class="gh-chart-subtitle">' + username + "'s coding journey over the past year</p>" +
+            '<p class="gh-chart-total" id="gh-total-count">Loading activity...</p>' +
+          '</div>' +
+          '<div class="gh-grid-container" id="gh-grid-container">' +
+            '<div class="stats-loading">Fetching live contribution data...</div>' +
+          '</div>' +
+          '<div class="gh-chart-footer">' +
+            '<span>Less</span>' +
+            '<div class="gh-legend">' +
+              '<div class="gh-square" data-level="NONE"></div>' +
+              '<div class="gh-square" data-level="FIRST_QUARTILE"></div>' +
+              '<div class="gh-square" data-level="SECOND_QUARTILE"></div>' +
+              '<div class="gh-square" data-level="THIRD_QUARTILE"></div>' +
+              '<div class="gh-square" data-level="FOURTH_QUARTILE"></div>' +
+            '</div>' +
+            '<span>More</span>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    fetch('https://github-contributions-api.deno.dev/' + username + '.json')
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (!data || !data.contributions) throw new Error('Invalid data');
+
+        // Update Total count in the header
+        var totalEl = document.getElementById('gh-total-count');
+        if (totalEl) {
+          totalEl.innerHTML = 'Total: <strong>' + (data.totalContributions || 0) + '</strong> contributions';
+        }
+
+        // Build HTML for Month Labels
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var monthRowHtml = '<div class="gh-month-labels" style="display:flex; gap:4px; margin-bottom:8px; height:15px;">';
+        var lastMonth = -1;
+
+        // Build HTML for the contribution grid
+        var gridHtml = '<div class="gh-grid">';
+        data.contributions.forEach(function(week, wIndex) {
+          // Month Label Logic
+          var firstDay = week.find(function(d){ return d; });
+          if (firstDay) {
+            var m = new Date(firstDay.date).getMonth();
+            if (m !== lastMonth) {
+              monthRowHtml += '<div style="font-family:var(--font-mono); font-size:10px; color:var(--muted); min-width:30px;">' + months[m] + '</div>';
+              lastMonth = m;
+            } else {
+              monthRowHtml += '<div style="min-width:12px;"></div>'; // Spacer
+            }
+          }
+
+          gridHtml += '<div class="gh-column">';
+          week.forEach(function(day) {
+            if (!day) return;
+            gridHtml += 
+              '<div class="gh-square" ' +
+              'data-level="' + day.contributionLevel + '" ' +
+              'data-date="' + day.date + '" ' +
+              'title="' + day.contributionCount + ' contributions on ' + day.date + '">' +
+              '</div>';
+          });
+          gridHtml += '</div>';
+        });
+        gridHtml += '</div>';
+        monthRowHtml += '</div>';
+
+        var container = document.getElementById('gh-grid-container');
+        if (container) {
+          container.innerHTML = monthRowHtml + gridHtml;
+        }
+      })
+      .catch(function(err) {
+        console.error('GitHub Chart error:', err);
+        var container = document.getElementById('gh-grid-container');
+        if (container) {
+          container.innerHTML = '<div class="stats-error">Failed to load live activity data.</div>';
+        }
+      });
+  }
+
+  // ===========================================
+  // RANDOM QUOTE RENDERER
+  // ===========================================
+  function renderQuote() {
+    var el = document.getElementById('quote-section');
+    if (!el) return;
+
+    // Robust list of high-quality dev quotes
+    var localQuotes = [
+      { content: "Consistency beats motivation every single time.", author: "Gen-Z Wisdom" },
+      { content: "The best way to predict the future is to invent it.", author: "Alan Kay" },
+      { content: "First, solve the problem. Then, write the code.", author: "John Johnson" },
+      { content: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+      { content: "Code is like humor. When you have to explain it, it’s bad.", author: "Cory House" },
+      { content: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
+      { content: "Make it work, make it right, make it fast.", author: "Kent Beck" },
+      { content: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson" },
+      { content: "Fix the cause, not just the symptom.", author: "Steve Maguire" },
+      { content: "Clean code always looks like it was written by someone who cares.", author: "Robert C. Martin" }
+    ];
+
+    // Primary: DummyJSON (Reliable), Fallback: Randomized local list
+    fetch('https://dummyjson.com/quotes/random?t=' + Date.now())
+      .then(function(res) { 
+        if (!res.ok) throw new Error();
+        return res.json(); 
+      })
+      .then(function(data) {
+        // DummyJSON returns { quote, author }
+        displayQuote(data.quote, data.author);
+      })
+      .catch(function() {
+        // Pick a truly random quote from the local list
+        var randomPick = localQuotes[Math.floor(Math.random() * localQuotes.length)];
+        displayQuote(randomPick.content, randomPick.author);
+      });
+
+    function displayQuote(content, author) {
+      el.innerHTML = 
+        '<div class="container">' +
+          '<div class="quote-card fade-in">' +
+            '<div class="quote-icon">&ldquo;</div>' +
+            '<p class="quote-text">"' + content + '"</p>' +
+            '<div class="quote-author-wrapper">' +
+              '<span class="quote-author">&mdash; ' + (author || 'Gen-Z Wisdom') + '</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      
+      setTimeout(function() {
+        var card = el.querySelector('.fade-in');
+        if (card) card.classList.add('visible');
+      }, 100);
+    }
+  }
+
   // ===========================================
   // FETCH & RENDER
   // ===========================================
@@ -323,8 +541,10 @@
         renderAbout(data.about);
         renderSkills(data.skills);
         renderExperience(data.experience);
-        renderProjects(data.projects);
         renderEducation(data.education);
+        renderGitHubStats(data.about.github_username);
+        renderQuote();
+        renderProjects(data.projects);
         renderFooter(data.about ? data.about.links : []);
 
         // Update page title from content
