@@ -657,13 +657,8 @@
       '100% { opacity: 1; }' +
     '}' +
 
-    /* ── Hide on small screens / touch devices ── */
+    /* ── Hide on small screens ── */
     '@media (max-width: 768px) {' +
-      '.robot-assistant { display: none !important; }' +
-      '.robot-toggle { display: none !important; }' +
-    '}' +
-
-    '@media (hover: none) {' +
       '.robot-assistant { display: none !important; }' +
       '.robot-toggle { display: none !important; }' +
     '}';
