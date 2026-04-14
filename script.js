@@ -124,7 +124,7 @@
       if (l.icon_only) attr += ' aria-label="' + esc(l.label) + '" title="' + esc(l.label) + '"';
 
       if (l.icon === 'preview') {
-        return '<button type="button" ' + attr + ' data-url="' + esc(l.url) + '">' + icon + labelHtml + '</button>';
+        return '<button type="button"  class="' + className + ' resume-preview-btn" data-url="' + esc(l.url) + '">' + icon + labelHtml + '</button>';
       }
       var target = isExternal(l.url) ? ' target="_blank" rel="noopener"' : '';
       var dl = l.icon === 'download' ? ' download' : '';
