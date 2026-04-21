@@ -139,27 +139,46 @@ experience:
 # ============================================
 
 projects:
+  - name: Hardware Crypto Cold Wallet
+    description: >
+      Developing a secure hardware-based cryptocurrency cold wallet using
+      microcontrollers for offline private key storage and transaction signing.
+      Focused on secure key isolation, firmware protection, and resistance to
+      physical and software attacks.
+
+      Includes on-device transaction verification and planned support
+      for networks like Stellar.
+    url: ADD_GITHUB_LINK
+    image: "/images/wallet.png"
+    status: "Building"
+    progress: 40
+    tags:
+      [Embedded Systems, Security, Blockchain, Cryptography, Hardware Wallet]
+
   - name: Drone Integrity Protocol (Zero-Knowledge Based)
     description: >
       Designed a secure drone communication and validation protocol using
       zero-knowledge principles to ensure data integrity, authenticity,
       and tamper-proof coordination between multiple drones.
+
+      This system enables verification of transmitted data without exposing
+      sensitive information, inspired by blockchain trustless models.
     url: ADD_GITHUB_LINK
     image: "/images/zk-drone.png"
-    status: "In Progress"
-    progress: 85
-    tags: [Blockchain, Solidity, Security, Distributed Systems]
+    status: "Completed"
+    progress: 100
+    tags: [Blockchain, Zero Knowledge, Security, Distributed Systems]
 
   - name: Autonomous Dual Drone System
     description: >
       Multi-agent drone system where one drone detects infected crops
-      using computer vision and sends GPS coordinates to another drone,
+      using onboard processing and sends GPS coordinates to another drone,
       which autonomously navigates and performs actions like spraying.
     url: ADD_GITHUB_LINK
     image: "/images/autonomous-drone.png"
     status: "Deployed"
     progress: 100
-    tags: [Python, YOLO, DroneKit, MMAVLink, Computer Vision]
+    tags: [Embedded Systems, MAVLink, Robotics, Autonomous Systems]
 
   - name: Self-Designed Modular Drone Frame (Patent Applied)
     description: >
@@ -170,47 +189,18 @@ projects:
     image: "/images/drone-frame.png"
     status: "Completed"
     progress: 100
-    tags: [CAD, Fusion 360, Mechanical Design]
+    tags: [CAD, Mechanical Design, Prototyping]
 
   - name: Agricultural Drone System with Dew Node
     description: >
       Smart agricultural drone system integrated with ground-based dew nodes
-      for environmental sensing and precision farming.
+      for environmental sensing and precision farming, enabling efficient
+      data-driven agricultural operations.
     url: ADD_GITHUB_LINK
     image: "/images/agri-drone.png"
     status: "Building"
     progress: 45
-    tags: [IoT, Drones, Sensors]
-
-  - name: MindPal – Stress Relief & Sleep System
-    description: >
-      VR-based mental wellness system focused on stress reduction
-      and sleep improvement using immersive environments.
-    url: ADD_GITHUB_LINK
-    image: "/images/mindpal.png"
-    status: "Paused"
-    progress: 30
-    tags: [VR, HealthTech]
-
-  - name: AI Robot with Emotion Display
-    description: >
-      Robot with custom CAD structure using ESP32 and Arduino,
-      displaying emotional responses based on sensor input.
-    url: ADD_GITHUB_LINK
-    image: "/images/robot.png"
-    status: "Building"
-    progress: 65
-    tags: [ESP32, Arduino, Embedded]
-
-  - name: ROS 6DOF Robotic Arm
-    description: >
-      Designed and simulated a robotic arm integrated with ROS2
-      for motion planning and control.
-    url: ADD_GITHUB_LINK
-    image: "/images/robot.png"
-    status: "Completed"
-    progress: 100
-    tags: [ROS2, Robotics, CAD]
+    tags: [IoT, Embedded Systems, Sensors, Agriculture]
 # ============================================
 # EDUCATION
 # ============================================
