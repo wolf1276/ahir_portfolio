@@ -165,7 +165,7 @@ projects:
       sensitive information, inspired by blockchain trustless models.
     url: ADD_GITHUB_LINK
     image: "/images/zk-drone.png"
-    status: "Completed"
+    status: "In Progress"
     progress: 100
     tags: [Blockchain, Zero Knowledge, Security, Distributed Systems]
 
