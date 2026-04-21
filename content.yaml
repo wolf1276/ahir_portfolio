@@ -166,7 +166,7 @@ projects:
     url: ADD_GITHUB_LINK
     image: "/images/zk-drone.png"
     status: "In Progress"
-    progress: 100
+    progress: 85
     tags: [Blockchain, Zero Knowledge, Security, Distributed Systems]
 
   - name: Autonomous Dual Drone System
